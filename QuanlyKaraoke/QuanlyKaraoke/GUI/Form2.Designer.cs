@@ -35,23 +35,23 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.dud_hddvsl = new System.Windows.Forms.DomainUpDown();
             this.label3 = new System.Windows.Forms.Label();
-            this.txt_hddvmadv = new System.Windows.Forms.TextBox();
+            this.txt_hddv_madv = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.txt_hddvsohd = new System.Windows.Forms.TextBox();
+            this.txt_hddv_sohd = new System.Windows.Forms.TextBox();
             this.lb_sohoadon = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.dgv_hddv = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.dgv_hddvchon = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_dsdv_madv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_dsdv_tendv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_dsdv_sl = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nud_hddv_sl = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -61,6 +61,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgv_hddv)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_hddvchon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_hddv_sl)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -73,13 +74,13 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.BackColor = System.Drawing.Color.SlateBlue;
+            this.splitContainer1.Panel1.Controls.Add(this.nud_hddv_sl);
             this.splitContainer1.Panel1.Controls.Add(this.button1);
             this.splitContainer1.Panel1.Controls.Add(this.button2);
-            this.splitContainer1.Panel1.Controls.Add(this.dud_hddvsl);
             this.splitContainer1.Panel1.Controls.Add(this.label3);
-            this.splitContainer1.Panel1.Controls.Add(this.txt_hddvmadv);
+            this.splitContainer1.Panel1.Controls.Add(this.txt_hddv_madv);
             this.splitContainer1.Panel1.Controls.Add(this.label1);
-            this.splitContainer1.Panel1.Controls.Add(this.txt_hddvsohd);
+            this.splitContainer1.Panel1.Controls.Add(this.txt_hddv_sohd);
             this.splitContainer1.Panel1.Controls.Add(this.lb_sohoadon);
             // 
             // splitContainer1.Panel2
@@ -107,14 +108,6 @@
             this.button2.Text = "Add";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // dud_hddvsl
-            // 
-            this.dud_hddvsl.Location = new System.Drawing.Point(109, 93);
-            this.dud_hddvsl.Name = "dud_hddvsl";
-            this.dud_hddvsl.Size = new System.Drawing.Size(120, 20);
-            this.dud_hddvsl.TabIndex = 6;
-            this.dud_hddvsl.Text = "Nhập số lượng";
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -125,12 +118,12 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "Số lượng";
             // 
-            // txt_hddvmadv
+            // txt_hddv_madv
             // 
-            this.txt_hddvmadv.Location = new System.Drawing.Point(109, 57);
-            this.txt_hddvmadv.Name = "txt_hddvmadv";
-            this.txt_hddvmadv.Size = new System.Drawing.Size(133, 20);
-            this.txt_hddvmadv.TabIndex = 3;
+            this.txt_hddv_madv.Location = new System.Drawing.Point(109, 57);
+            this.txt_hddv_madv.Name = "txt_hddv_madv";
+            this.txt_hddv_madv.Size = new System.Drawing.Size(133, 20);
+            this.txt_hddv_madv.TabIndex = 3;
             // 
             // label1
             // 
@@ -143,12 +136,12 @@
             this.label1.Text = "Dịch vụ";
             this.label1.Click += new System.EventHandler(this.lb_sohoadon_Click);
             // 
-            // txt_hddvsohd
+            // txt_hddv_sohd
             // 
-            this.txt_hddvsohd.Location = new System.Drawing.Point(109, 21);
-            this.txt_hddvsohd.Name = "txt_hddvsohd";
-            this.txt_hddvsohd.Size = new System.Drawing.Size(133, 20);
-            this.txt_hddvsohd.TabIndex = 3;
+            this.txt_hddv_sohd.Location = new System.Drawing.Point(109, 21);
+            this.txt_hddv_sohd.Name = "txt_hddv_sohd";
+            this.txt_hddv_sohd.Size = new System.Drawing.Size(133, 20);
+            this.txt_hddv_sohd.TabIndex = 3;
             // 
             // lb_sohoadon
             // 
@@ -196,9 +189,9 @@
             this.dgv_hddv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgv_hddv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_hddv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3});
+            this.dgv_dsdv_madv,
+            this.dgv_dsdv_tendv,
+            this.dgv_dsdv_sl});
             this.dgv_hddv.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv_hddv.Location = new System.Drawing.Point(3, 3);
             this.dgv_hddv.Name = "dgv_hddv";
@@ -206,23 +199,7 @@
             this.dgv_hddv.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgv_hddv.Size = new System.Drawing.Size(365, 240);
             this.dgv_hddv.TabIndex = 0;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Mã dịch vụ";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column2.HeaderText = "Tên dịch vụ";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column3.HeaderText = "Số lượng hiện có";
-            this.Column3.Name = "Column3";
+            this.dgv_hddv.Click += new System.EventHandler(this.dgv_hddv_Click);
             // 
             // tabPage2
             // 
@@ -277,6 +254,30 @@
             this.dataGridViewTextBoxColumn3.HeaderText = "Số lượng";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             // 
+            // dgv_dsdv_madv
+            // 
+            this.dgv_dsdv_madv.HeaderText = "Mã dịch vụ";
+            this.dgv_dsdv_madv.Name = "dgv_dsdv_madv";
+            // 
+            // dgv_dsdv_tendv
+            // 
+            this.dgv_dsdv_tendv.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dgv_dsdv_tendv.HeaderText = "Tên dịch vụ";
+            this.dgv_dsdv_tendv.Name = "dgv_dsdv_tendv";
+            // 
+            // dgv_dsdv_sl
+            // 
+            this.dgv_dsdv_sl.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dgv_dsdv_sl.HeaderText = "Số lượng hiện có";
+            this.dgv_dsdv_sl.Name = "dgv_dsdv_sl";
+            // 
+            // nud_hddv_sl
+            // 
+            this.nud_hddv_sl.Location = new System.Drawing.Point(109, 92);
+            this.nud_hddv_sl.Name = "nud_hddv_sl";
+            this.nud_hddv_sl.Size = new System.Drawing.Size(120, 20);
+            this.nud_hddv_sl.TabIndex = 8;
+            // 
             // frm_hddv
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -296,6 +297,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgv_hddv)).EndInit();
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_hddvchon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_hddv_sl)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -306,21 +308,21 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.TextBox txt_hddvsohd;
+        private System.Windows.Forms.TextBox txt_hddv_sohd;
         private System.Windows.Forms.Label lb_sohoadon;
-        private System.Windows.Forms.TextBox txt_hddvmadv;
+        private System.Windows.Forms.TextBox txt_hddv_madv;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.DomainUpDown dud_hddvsl;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridView dgv_hddv;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridView dgv_hddvchon;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_dsdv_madv;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_dsdv_tendv;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_dsdv_sl;
+        private System.Windows.Forms.NumericUpDown nud_hddv_sl;
     }
 }

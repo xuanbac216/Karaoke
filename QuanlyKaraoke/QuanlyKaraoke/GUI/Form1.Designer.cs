@@ -98,31 +98,25 @@
             this.lb_sohoadon = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.btn_dv_them = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.btn_dv_sua = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
+            this.btn_dv_xoa = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
+            this.btn_dv_search = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.dgv_dichvu = new System.Windows.Forms.DataGridView();
-            this.madichvu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tendichvu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.donvi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.soluong = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dongia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.btn_dv_cancel = new System.Windows.Forms.Button();
+            this.btn_dv_ok = new System.Windows.Forms.Button();
+            this.cmb_loaidv = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txt_tendv = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.txt_dv_dvt = new System.Windows.Forms.TextBox();
+            this.txt_dv_dongia = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txt_dv_soluong = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txt_madv = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -209,6 +203,12 @@
             this.tabPage11 = new System.Windows.Forms.TabPage();
             this.label25 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.madichvu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tendichvu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.soluong = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dongia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.donvi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -258,7 +258,6 @@
             // 
             this.splitContainer1.Panel1.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.splitContainer1.Panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("splitContainer1.Panel1.BackgroundImage")));
-            this.splitContainer1.Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel1_Paint);
             // 
             // splitContainer1.Panel2
             // 
@@ -387,7 +386,6 @@
             this.dgv_hoadonhd.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dgv_hoadonhd.Size = new System.Drawing.Size(385, 199);
             this.dgv_hoadonhd.TabIndex = 2;
-            this.dgv_hoadonhd.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_dichvu_CellContentClick);
             this.dgv_hoadonhd.Click += new System.EventHandler(this.dgv_hoadonhd_Click);
             // 
             // hdhd_sohoadon
@@ -625,7 +623,6 @@
             this.toolStripButton15.Name = "toolStripButton15";
             this.toolStripButton15.Size = new System.Drawing.Size(102, 24);
             this.toolStripButton15.Text = "Xuất hóa đơn";
-            this.toolStripButton15.Click += new System.EventHandler(this.toolStripButton15_Click);
             // 
             // toolStripSeparator11
             // 
@@ -819,19 +816,18 @@
             this.tabPage2.Size = new System.Drawing.Size(782, 477);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Quản lý dịch vụ";
-            this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
             // 
             // toolStrip2
             // 
             this.toolStrip2.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton1,
+            this.btn_dv_them,
             this.toolStripSeparator2,
-            this.toolStripButton2,
+            this.btn_dv_sua,
             this.toolStripSeparator3,
-            this.toolStripButton3,
+            this.btn_dv_xoa,
             this.toolStripSeparator4,
-            this.toolStripButton4,
+            this.btn_dv_search,
             this.toolStripSeparator5});
             this.toolStrip2.Location = new System.Drawing.Point(3, 3);
             this.toolStrip2.Name = "toolStrip2";
@@ -839,55 +835,55 @@
             this.toolStrip2.TabIndex = 9;
             this.toolStrip2.Text = "Công cụ";
             // 
-            // toolStripButton1
+            // btn_dv_them
             // 
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(86, 24);
-            this.toolStripButton1.Text = "Thêm mới";
-            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            this.btn_dv_them.Image = ((System.Drawing.Image)(resources.GetObject("btn_dv_them.Image")));
+            this.btn_dv_them.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btn_dv_them.Name = "btn_dv_them";
+            this.btn_dv_them.Size = new System.Drawing.Size(86, 24);
+            this.btn_dv_them.Text = "Thêm mới";
+            this.btn_dv_them.Click += new System.EventHandler(this.btn_dv_them_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(6, 27);
             // 
-            // toolStripButton2
+            // btn_dv_sua
             // 
-            this.toolStripButton2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(84, 24);
-            this.toolStripButton2.Text = "Chỉnh sửa";
+            this.btn_dv_sua.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btn_dv_sua.Image = ((System.Drawing.Image)(resources.GetObject("btn_dv_sua.Image")));
+            this.btn_dv_sua.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btn_dv_sua.Name = "btn_dv_sua";
+            this.btn_dv_sua.Size = new System.Drawing.Size(84, 24);
+            this.btn_dv_sua.Text = "Chỉnh sửa";
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(6, 27);
             // 
-            // toolStripButton3
+            // btn_dv_xoa
             // 
-            this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
-            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(93, 24);
-            this.toolStripButton3.Text = "Xóa dịch vụ";
-            this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
+            this.btn_dv_xoa.Image = ((System.Drawing.Image)(resources.GetObject("btn_dv_xoa.Image")));
+            this.btn_dv_xoa.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btn_dv_xoa.Name = "btn_dv_xoa";
+            this.btn_dv_xoa.Size = new System.Drawing.Size(93, 24);
+            this.btn_dv_xoa.Text = "Xóa dịch vụ";
+            this.btn_dv_xoa.Click += new System.EventHandler(this.btn_dv_xoa_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
             this.toolStripSeparator4.Size = new System.Drawing.Size(6, 27);
             // 
-            // toolStripButton4
+            // btn_dv_search
             // 
-            this.toolStripButton4.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton4.Image")));
-            this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton4.Name = "toolStripButton4";
-            this.toolStripButton4.Size = new System.Drawing.Size(81, 24);
-            this.toolStripButton4.Text = "Tìm kiếm";
+            this.btn_dv_search.Image = ((System.Drawing.Image)(resources.GetObject("btn_dv_search.Image")));
+            this.btn_dv_search.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btn_dv_search.Name = "btn_dv_search";
+            this.btn_dv_search.Size = new System.Drawing.Size(81, 24);
+            this.btn_dv_search.Text = "Tìm kiếm";
             // 
             // toolStripSeparator5
             // 
@@ -911,9 +907,9 @@
             this.madichvu,
             this.tendichvu,
             this.Column1,
-            this.donvi,
             this.soluong,
-            this.dongia});
+            this.dongia,
+            this.donvi});
             dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -928,49 +924,18 @@
             this.dgv_dichvu.Size = new System.Drawing.Size(776, 260);
             this.dgv_dichvu.TabIndex = 8;
             this.dgv_dichvu.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_dichvu_CellClick);
-            this.dgv_dichvu.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_dichvu_CellContentClick_1);
-            // 
-            // madichvu
-            // 
-            this.madichvu.HeaderText = "Mã dịch vụ";
-            this.madichvu.Name = "madichvu";
-            // 
-            // tendichvu
-            // 
-            this.tendichvu.HeaderText = "Tên dịch vụ";
-            this.tendichvu.Name = "tendichvu";
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Loại dịch vụ";
-            this.Column1.Name = "Column1";
-            // 
-            // donvi
-            // 
-            this.donvi.HeaderText = "ĐVT";
-            this.donvi.Name = "donvi";
-            // 
-            // soluong
-            // 
-            this.soluong.HeaderText = "Số lượng";
-            this.soluong.Name = "soluong";
-            // 
-            // dongia
-            // 
-            this.dongia.HeaderText = "Đơn giá";
-            this.dongia.Name = "dongia";
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.button4);
-            this.groupBox3.Controls.Add(this.button3);
-            this.groupBox3.Controls.Add(this.comboBox3);
+            this.groupBox3.Controls.Add(this.btn_dv_cancel);
+            this.groupBox3.Controls.Add(this.btn_dv_ok);
+            this.groupBox3.Controls.Add(this.cmb_loaidv);
             this.groupBox3.Controls.Add(this.label8);
             this.groupBox3.Controls.Add(this.txt_tendv);
-            this.groupBox3.Controls.Add(this.textBox6);
-            this.groupBox3.Controls.Add(this.textBox5);
+            this.groupBox3.Controls.Add(this.txt_dv_dvt);
+            this.groupBox3.Controls.Add(this.txt_dv_dongia);
             this.groupBox3.Controls.Add(this.label9);
-            this.groupBox3.Controls.Add(this.textBox4);
+            this.groupBox3.Controls.Add(this.txt_dv_soluong);
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Controls.Add(this.txt_madv);
             this.groupBox3.Controls.Add(this.label4);
@@ -983,33 +948,34 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "THÔNG TIN DỊCH VỤ";
             // 
-            // button4
+            // btn_dv_cancel
             // 
-            this.button4.Location = new System.Drawing.Point(585, 56);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 7;
-            this.button4.Text = "Cancel";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Visible = false;
+            this.btn_dv_cancel.Location = new System.Drawing.Point(585, 56);
+            this.btn_dv_cancel.Name = "btn_dv_cancel";
+            this.btn_dv_cancel.Size = new System.Drawing.Size(75, 23);
+            this.btn_dv_cancel.TabIndex = 7;
+            this.btn_dv_cancel.Text = "Cancel";
+            this.btn_dv_cancel.UseVisualStyleBackColor = true;
+            this.btn_dv_cancel.Visible = false;
             // 
-            // button3
+            // btn_dv_ok
             // 
-            this.button3.Location = new System.Drawing.Point(585, 23);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 6;
-            this.button3.Text = "OK";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Visible = false;
+            this.btn_dv_ok.Location = new System.Drawing.Point(585, 23);
+            this.btn_dv_ok.Name = "btn_dv_ok";
+            this.btn_dv_ok.Size = new System.Drawing.Size(75, 23);
+            this.btn_dv_ok.TabIndex = 6;
+            this.btn_dv_ok.Text = "OK";
+            this.btn_dv_ok.UseVisualStyleBackColor = true;
+            this.btn_dv_ok.Visible = false;
+            this.btn_dv_ok.Click += new System.EventHandler(this.btn_dv_ok_Click);
             // 
-            // comboBox3
+            // cmb_loaidv
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(118, 92);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(79, 21);
-            this.comboBox3.TabIndex = 5;
+            this.cmb_loaidv.FormattingEnabled = true;
+            this.cmb_loaidv.Location = new System.Drawing.Point(118, 92);
+            this.cmb_loaidv.Name = "cmb_loaidv";
+            this.cmb_loaidv.Size = new System.Drawing.Size(79, 21);
+            this.cmb_loaidv.TabIndex = 5;
             // 
             // label8
             // 
@@ -1022,24 +988,27 @@
             // 
             // txt_tendv
             // 
+            this.txt_tendv.Enabled = false;
             this.txt_tendv.Location = new System.Drawing.Point(118, 61);
             this.txt_tendv.Name = "txt_tendv";
             this.txt_tendv.Size = new System.Drawing.Size(161, 20);
             this.txt_tendv.TabIndex = 1;
             // 
-            // textBox6
+            // txt_dv_dvt
             // 
-            this.textBox6.Location = new System.Drawing.Point(398, 91);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(122, 20);
-            this.textBox6.TabIndex = 1;
+            this.txt_dv_dvt.Enabled = false;
+            this.txt_dv_dvt.Location = new System.Drawing.Point(398, 91);
+            this.txt_dv_dvt.Name = "txt_dv_dvt";
+            this.txt_dv_dvt.Size = new System.Drawing.Size(122, 20);
+            this.txt_dv_dvt.TabIndex = 1;
             // 
-            // textBox5
+            // txt_dv_dongia
             // 
-            this.textBox5.Location = new System.Drawing.Point(398, 58);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(161, 20);
-            this.textBox5.TabIndex = 1;
+            this.txt_dv_dongia.Enabled = false;
+            this.txt_dv_dongia.Location = new System.Drawing.Point(398, 58);
+            this.txt_dv_dongia.Name = "txt_dv_dongia";
+            this.txt_dv_dongia.Size = new System.Drawing.Size(161, 20);
+            this.txt_dv_dongia.TabIndex = 1;
             // 
             // label9
             // 
@@ -1050,12 +1019,13 @@
             this.label9.TabIndex = 0;
             this.label9.Text = "Đơn vị tính";
             // 
-            // textBox4
+            // txt_dv_soluong
             // 
-            this.textBox4.Location = new System.Drawing.Point(398, 25);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(161, 20);
-            this.textBox4.TabIndex = 1;
+            this.txt_dv_soluong.Enabled = false;
+            this.txt_dv_soluong.Location = new System.Drawing.Point(398, 25);
+            this.txt_dv_soluong.Name = "txt_dv_soluong";
+            this.txt_dv_soluong.Size = new System.Drawing.Size(161, 20);
+            this.txt_dv_soluong.TabIndex = 1;
             // 
             // label5
             // 
@@ -1068,6 +1038,7 @@
             // 
             // txt_madv
             // 
+            this.txt_madv.Enabled = false;
             this.txt_madv.Location = new System.Drawing.Point(118, 29);
             this.txt_madv.Name = "txt_madv";
             this.txt_madv.Size = new System.Drawing.Size(161, 20);
@@ -1769,7 +1740,6 @@
             this.label26.Size = new System.Drawing.Size(32, 13);
             this.label26.TabIndex = 31;
             this.label26.Text = "Ngày";
-            this.label26.Click += new System.EventHandler(this.label26_Click);
             // 
             // tabPage9
             // 
@@ -1854,7 +1824,6 @@
             this.label25.Size = new System.Drawing.Size(29, 13);
             this.label25.TabIndex = 35;
             this.label25.Text = "Năm";
-            this.label25.Click += new System.EventHandler(this.label25_Click);
             // 
             // textBox1
             // 
@@ -1862,6 +1831,38 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(109, 20);
             this.textBox1.TabIndex = 34;
+            // 
+            // madichvu
+            // 
+            this.madichvu.HeaderText = "Mã dịch vụ";
+            this.madichvu.Name = "madichvu";
+            // 
+            // tendichvu
+            // 
+            this.tendichvu.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.tendichvu.HeaderText = "Tên dịch vụ";
+            this.tendichvu.Name = "tendichvu";
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Loại dịch vụ";
+            this.Column1.Name = "Column1";
+            // 
+            // soluong
+            // 
+            this.soluong.HeaderText = "Số lượng";
+            this.soluong.Name = "soluong";
+            // 
+            // dongia
+            // 
+            this.dongia.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dongia.HeaderText = "Đơn giá";
+            this.dongia.Name = "dongia";
+            // 
+            // donvi
+            // 
+            this.donvi.HeaderText = "ĐVT";
+            this.donvi.Name = "donvi";
             // 
             // Form1
             // 
@@ -1972,22 +1973,16 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.DataGridView dgv_dichvu;
-        private System.Windows.Forms.DataGridViewTextBoxColumn madichvu;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tendichvu;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn donvi;
-        private System.Windows.Forms.DataGridViewTextBoxColumn soluong;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dongia;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.Button btn_dv_cancel;
+        private System.Windows.Forms.Button btn_dv_ok;
+        private System.Windows.Forms.ComboBox cmb_loaidv;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txt_tendv;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox txt_dv_dvt;
+        private System.Windows.Forms.TextBox txt_dv_dongia;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txt_dv_soluong;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txt_madv;
         private System.Windows.Forms.Label label4;
@@ -2089,14 +2084,20 @@
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.ToolStrip toolStrip2;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton btn_dv_them;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripButton toolStripButton2;
+        private System.Windows.Forms.ToolStripButton btn_dv_sua;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private System.Windows.Forms.ToolStripButton toolStripButton3;
+        private System.Windows.Forms.ToolStripButton btn_dv_xoa;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
-        private System.Windows.Forms.ToolStripButton toolStripButton4;
+        private System.Windows.Forms.ToolStripButton btn_dv_search;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn madichvu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tendichvu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn soluong;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dongia;
+        private System.Windows.Forms.DataGridViewTextBoxColumn donvi;
     }
 }
 

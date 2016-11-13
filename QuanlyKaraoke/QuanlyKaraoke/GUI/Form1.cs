@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using QuanlyKaraoke.BLL;
+using QuanlyKaraoke.Entity;
 
 namespace QuanlyKaraoke
 {
@@ -74,7 +76,7 @@ namespace QuanlyKaraoke
             #region Đổ dữ liệu cho kho hóa đơn
             dgv_khohoadon.DataSource = null;
             dgv_khohoadon.Rows.Clear();
-            string sSelectHoadon = "select * from hoadon";
+            string sSelectHoadon = "select * from hoadon where trangthai=1";
             daKaraoke = new MySqlDataAdapter(sSelectHoadon, conn);
             daKaraoke.Fill(ds, "tbl_KhoHoaDon");
             foreach (DataRow r in ds.Tables["tbl_KhoHoaDon"].Rows)
@@ -85,45 +87,54 @@ namespace QuanlyKaraoke
             ds.Tables["tbl_KhoHoaDon"].Clear();
             #endregion
         }
+        //public void LoadHoaDonHoatDong()
+        //{
+        //    dgv_hoadonhd.DataSource = null;
+        //    dgv_hoadonhd.Rows.Clear();
+        //    #region Đổ dữ liệu cho hóa đơn đang hoạt động
+        //    string sSelectHoadonhd = "select * from hoadon where trangthai=0";
+        //    daKaraoke = new MySqlDataAdapter(sSelectHoadonhd, conn);
+        //    daKaraoke.Fill(ds, "tbl_HoaDonHoatDong");
+        //    foreach (DataRow r in ds.Tables["tbl_HoaDonHoatDong"].Rows)
+        //    {
+
+        //        dgv_hoadonhd.Rows.Add(r[0], r[1], r[4]);
+        //    }
+        //    ds.Tables["tbl_HoaDonHoatDong"].Clear();
+        //    #endregion
+        //}
         public void LoadHoaDonHoatDong()
         {
             dgv_hoadonhd.DataSource = null;
             dgv_hoadonhd.Rows.Clear();
             #region Đổ dữ liệu cho hóa đơn đang hoạt động
-            string sSelectHoadonhd = "select * from hoadon where trangthai=0";
-            daKaraoke = new MySqlDataAdapter(sSelectHoadonhd, conn);
-            daKaraoke.Fill(ds, "tbl_HoaDonHoatDong");
-            foreach (DataRow r in ds.Tables["tbl_HoaDonHoatDong"].Rows)
+            var lst = XuLyHoaDon.GetHoaDon();
+            
+            foreach (HoaDon h in lst)
             {
 
-                dgv_hoadonhd.Rows.Add(r[0], r[1], r[4]);
+                dgv_hoadonhd.Rows.Add(h.SoHoaDon, h.MaPhong, h.GioVao);
             }
-            ds.Tables["tbl_HoaDonHoatDong"].Clear();
             #endregion
         }
         public void LoadCmbPhong()
         {
+         
             #region Đổ dữ liệu cho combobox phòng
             DataTable cmb = new DataTable();
             cmb.Columns.Add("maphong");
             cmb.Columns.Add("tenphong");
+            var lst = XuLyHoaDon.GetPhongTrong();
             
-            string sSelectPhong = "select maphong,tenphong from phong where trangthai=0";
-            daKaraoke = new MySqlDataAdapter(sSelectPhong, conn);
-            daKaraoke.Fill(ds, "tbl_Phong");
-            
-            foreach (DataRow r in ds.Tables["tbl_Phong"].Rows)
+            foreach (Phong p in lst)
             {
 
-                cmb.Rows.Add(r[0], r[1]);
+                cmb.Rows.Add(p.MaPhong, p.TenPhong);
                 
             }
             cmb_hdphong.DataSource = cmb;
             cmb_hdphong.DisplayMember = "tenphong";
             cmb_hdphong.ValueMember = "maphong";
-            ds.Tables["tbl_Phong"].Rows.Clear();
-            //cmb_hdphong.DataSource = ds.Tables["tbl_Phong"];
-           
 
             #endregion
         }
@@ -132,16 +143,12 @@ namespace QuanlyKaraoke
             dgv_dichvu.DataSource = null;
             dgv_dichvu.Rows.Clear();
             #region Đổ dữ liệu bảng dịch vụ
-            string sSelectHoadonhd = "select * from dichvu";
-            daKaraoke = new MySqlDataAdapter(sSelectHoadonhd, conn);
-            daKaraoke.Fill(ds, "tbl_DichVu");
-            foreach (DataRow r in ds.Tables["tbl_DichVu"].Rows)
+            var lst = XuLyDichVu.GetDichVu();
+            foreach (DichVu dv in lst)
             {
-
-                dgv_dichvu.Rows.Add(r[0],r[1], r[2],r[3],r[4],r[5]);
+                dgv_dichvu.Rows.Add(dv.maDichVu,dv.tenDichVu, dv.loaiDichVu,dv.soLuong,dv.donGia,dv.dVT);
                
             }
-            ds.Tables["tbl_DichVu"].Clear();
             #endregion
         }
         private void Form1_Load(object sender, EventArgs e)
@@ -163,20 +170,18 @@ namespace QuanlyKaraoke
 
         }
        
-        public void ExcuteHoaDonDichVu()
+        public void ExcuteHoaDonDichVu(string soHD)
         {
-            string sSelectHDDV = "select hd.madv, dv.tendv, hd.soluong from hoadon_dichvu as hd, dichvu as dv where hd.madv = dv.madv and sohd=" + txt_hdsohoadon.Text;
-            daKaraoke = new MySqlDataAdapter(sSelectHDDV, conn);
-            daKaraoke.Fill(ds, "tbl_HoaDonDichVu");
+            var lst = XuLyHoaDon.GetDichVuHoaDon(soHD);
             dgv_hoadondichvu.DataSource = null;
             dgv_hoadondichvu.Rows.Clear();
 
-            foreach (DataRow r in ds.Tables["tbl_HoaDonDichVu"].Rows)
+            foreach (DichVu r in lst)
             {
 
-                dgv_hoadondichvu.Rows.Add(r[0], r[1], r[2]);
+                dgv_hoadondichvu.Rows.Add(r.maDichVu, r.tenDichVu, r.soLuong);
             }
-            ds.Tables["tbl_HoaDonDichVu"].Clear();
+            
         }
         //public void ExcuteDichVu()
         //{
@@ -219,7 +224,7 @@ namespace QuanlyKaraoke
                 
                 //dtm_hdgiora.Text = dt.Cells["hdhd_giora"].Value.ToString();
                 cmb_hdphong.Enabled = false;
-                ExcuteHoaDonDichVu();
+                ExcuteHoaDonDichVu(txt_hdsohoadon.Text.ToString());
                 
             }
             catch {
@@ -229,28 +234,14 @@ namespace QuanlyKaraoke
         
         public void ThemHoaDon()
         {
-            try
-            {
-                string sThemHoaDon = "insert into hoadon(maphong,giovao,trangthai) value(@maphong,@giovao,@trangthai)";
-                MySqlCommand cmd = new MySqlCommand(sThemHoaDon, conn);
-                cmd.Parameters.AddWithValue("@maphong", cmb_hdphong.SelectedValue);
-                var giovao =  DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"); ;
-                cmd.Parameters.AddWithValue("@giovao", giovao.ToString());
-                cmd.Parameters.AddWithValue("@trangthai", 0);
-                cmd.ExecuteNonQuery();
-                OpenRoom(cmb_hdphong.SelectedValue.ToString());
-                LoadHoaDonHoatDong();
-                LoadKhoHoaDon();
-                LoadCmbPhong();
-
-                MessageBox.Show("Thêm hóa đơn thành công!");
-                cmd.Parameters.Clear();
-               
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            OpenRoom(cmb_hdphong.SelectedValue.ToString());
+            var add = XuLyHoaDon.ThemHoaDon(cmb_hdphong.SelectedValue.ToString());
+            if (add) MessageBox.Show("Thêm hóa đơn thành công!");
+            LoadHoaDonHoatDong();
+            LoadKhoHoaDon();
+            LoadCmbPhong();
+            
+            
             
         }
         public void DoiPhong()
@@ -344,50 +335,6 @@ namespace QuanlyKaraoke
             }
         }
 
-        private void toolStripButton15_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox6_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label25_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label26_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dgv_dichvu_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            
-        }
-
-        private void tabPage2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void toolStripButton3_Click(object sender, EventArgs e)
-        {
-            //for txdid divu lieu co bang tât ca cac phong co dich vu
-        }
-
-        private void toolStripButton1_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void dgv_dichvu_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -396,6 +343,7 @@ namespace QuanlyKaraoke
                 DataGridViewRow dt = dgv_dichvu.SelectedRows[0];
                 txt_madv.Text = dt.Cells["madichvu"].Value.ToString();
                 txt_tendv.Text = dt.Cells["tendichvu"].Value.ToString();
+                txt_dv_soluong.Text = dt.Cells["soluong"].Value.ToString();
                 //cmb_hdphong.Text = dt.Cells["hdhd_phong"].Value.ToString();
                 //testRoom = dt.Cells["hdhd_phong"].Value.ToString();
                 //dtm_hdgiovao.Text = dt.Cells["hdhd_giovao"].Value.ToString();
@@ -410,9 +358,42 @@ namespace QuanlyKaraoke
             }
         }
 
-        private void dgv_dichvu_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        private void btn_dv_xoa_Click(object sender, EventArgs e)
         {
+            if (txt_madv.Text.Equals(null) || txt_madv.Text.Equals("")) return;
+            XuLyDichVu.XoaDichVu(txt_madv.Text.ToString());
+            LoadDichvu();
+        }
+        private void ResetDichVu()
+        {
+            txt_madv.Text = "";
+            txt_tendv.Text = "";
+            txt_dv_soluong.Text = "";
+            txt_dv_dongia.Text = "";
+            txt_dv_dvt.Text = "";
+        }
+        private void btn_dv_them_Click(object sender, EventArgs e)
+        {
+            txt_madv.Enabled=true;
+            txt_tendv.Enabled = true;
+            txt_dv_soluong.Enabled = true;
+            txt_dv_dongia.Enabled = true;
+            txt_dv_dvt.Enabled = true;
+            btn_dv_ok.Visible = true;
+            btn_dv_cancel.Visible = true;
+            ResetDichVu();
+        }
 
+        private void btn_dv_ok_Click(object sender, EventArgs e)
+        {
+            var maDv = txt_madv.Text;
+            var tenDv = txt_tendv.Text;
+            var loaiDv = "";
+            var sl = txt_dv_soluong.Text;
+            var dg = txt_dv_dongia.Text;
+            var dvt = txt_dv_dvt.Text;
+            XuLyDichVu.ThemDichVu(maDv, tenDv, loaiDv, sl, dg, dvt);
+            LoadDichvu();
         }
     }
 }
