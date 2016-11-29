@@ -12,6 +12,7 @@ namespace QuanlyKaraoke.DAL
 {
     public class HoaDonDAO : DAO
     {
+        List<KeyValuePair<bool, String>> Error;
         internal static List<HoaDon> LoadHoaDonHoatDong()
         {
             var lst = new List<HoaDon>();
@@ -50,9 +51,9 @@ namespace QuanlyKaraoke.DAL
 
             return lst;
         }
-        internal static bool ThemHoaDon(string maPhong)
+        internal static String ThemHoaDon(string maPhong)
         {
-            
+            String error = null;
             #region 1. Open DbConnection
             OpenConnection();
 
@@ -73,13 +74,10 @@ namespace QuanlyKaraoke.DAL
             try
             {
                 var nEffectedRows = cmd.ExecuteNonQuery();
-                return true;
             }
             catch (Exception exc)
             {
-               throw exc;
-                MessageBox.Show("Thêm hóa đơn thất bại! Lỗi:" + exc);
-                return false;
+                error = "Thêm hóa đơn thất bại! Lỗi: " + exc.Message;
             }
             #endregion
 
@@ -92,7 +90,7 @@ namespace QuanlyKaraoke.DAL
             CloseConnection();
             #endregion
 
-            
+            return error;
         }
 
         

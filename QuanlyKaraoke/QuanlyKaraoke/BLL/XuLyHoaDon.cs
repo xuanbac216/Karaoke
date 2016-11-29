@@ -37,14 +37,20 @@ namespace QuanlyKaraoke.BLL
 
             #endregion
         }
-        internal static bool ThemHoaDon(string maPhong)
+        internal static string ThemHoaDon(string maPhong)
         {
 
             #region Xu ly Them hoa don, goi tang DAO
             return HoaDonDAO.ThemHoaDon(maPhong);
-            
-
             #endregion
+        }
+        internal static void Update(string soHd, string maDv, string soluong)
+        {
+            HoaDonDichVuDAO.Update(soHd, maDv, soluong);
+        }
+        internal static void ThemDichVu(string soHd, string maDv, string soluong)
+        {
+            HoaDonDichVuDAO.ThemDichVu(soHd, maDv, soluong);
         }
     }
 }

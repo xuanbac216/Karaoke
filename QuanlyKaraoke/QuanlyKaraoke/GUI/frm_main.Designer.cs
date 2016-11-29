@@ -1,6 +1,6 @@
 ﻿namespace QuanlyKaraoke
 {
-    partial class Form1
+    partial class frm_main
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_main));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -48,6 +48,24 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txt_hdsohoadon = new System.Windows.Forms.TextBox();
+            this.btn_hdcancel = new System.Windows.Forms.Button();
+            this.btn_hdok = new System.Windows.Forms.Button();
+            this.dtm_hdgiora = new System.Windows.Forms.DateTimePicker();
+            this.dtm_hdgiovao = new System.Windows.Forms.DateTimePicker();
+            this.cmb_hdphong = new System.Windows.Forms.ComboBox();
+            this.lb_giora = new System.Windows.Forms.Label();
+            this.lb_giovao = new System.Windows.Forms.Label();
+            this.lb_phong = new System.Windows.Forms.Label();
+            this.lb_sohoadon = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.nud_hddv_soluong = new System.Windows.Forms.NumericUpDown();
+            this.btn_hd_save = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txt_hdmadv = new System.Windows.Forms.TextBox();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
@@ -56,9 +74,9 @@
             this.hdhd_phong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.hdhd_giovao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_hoadondichvu = new System.Windows.Forms.DataGridView();
-            this.Column20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hddv_madv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hddv_tendv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hddv_soluong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.dgv_khohoadon = new System.Windows.Forms.DataGridView();
             this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -79,23 +97,6 @@
             this.toolStripButton26 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton15 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btn_hddone = new System.Windows.Forms.Button();
-            this.dud_hdsl = new System.Windows.Forms.DomainUpDown();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txt_hdmadv = new System.Windows.Forms.TextBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txt_hdsohoadon = new System.Windows.Forms.TextBox();
-            this.btn_hdcancel = new System.Windows.Forms.Button();
-            this.btn_hdok = new System.Windows.Forms.Button();
-            this.dtm_hdgiora = new System.Windows.Forms.DateTimePicker();
-            this.dtm_hdgiovao = new System.Windows.Forms.DateTimePicker();
-            this.cmb_hdphong = new System.Windows.Forms.ComboBox();
-            this.lb_giora = new System.Windows.Forms.Label();
-            this.lb_giovao = new System.Windows.Forms.Label();
-            this.lb_phong = new System.Windows.Forms.Label();
-            this.lb_sohoadon = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.btn_dv_them = new System.Windows.Forms.ToolStripButton();
@@ -107,6 +108,12 @@
             this.btn_dv_search = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.dgv_dichvu = new System.Windows.Forms.DataGridView();
+            this.madichvu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tendichvu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.soluong = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dongia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.donvi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btn_dv_cancel = new System.Windows.Forms.Button();
             this.btn_dv_ok = new System.Windows.Forms.Button();
@@ -203,17 +210,18 @@
             this.tabPage11 = new System.Windows.Forms.TabPage();
             this.label25 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.madichvu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tendichvu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.soluong = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dongia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.donvi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
+            this.splitContainer3.Panel1.SuspendLayout();
+            this.splitContainer3.Panel2.SuspendLayout();
+            this.splitContainer3.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_hddv_soluong)).BeginInit();
             this.tabControl2.SuspendLayout();
             this.tabPage5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
@@ -225,8 +233,6 @@
             this.tabPage6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_khohoadon)).BeginInit();
             this.toolStrip1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.toolStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_dichvu)).BeginInit();
@@ -289,10 +295,9 @@
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.tabPage1.Controls.Add(this.splitContainer3);
             this.tabPage1.Controls.Add(this.tabControl2);
             this.tabPage1.Controls.Add(this.toolStrip1);
-            this.tabPage1.Controls.Add(this.groupBox2);
-            this.tabPage1.Controls.Add(this.groupBox1);
             this.tabPage1.Location = new System.Drawing.Point(4, 29);
             this.tabPage1.Margin = new System.Windows.Forms.Padding(0);
             this.tabPage1.Name = "tabPage1";
@@ -300,17 +305,210 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Quản lý hóa đơn";
             // 
+            // splitContainer3
+            // 
+            this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer3.Location = new System.Drawing.Point(0, 27);
+            this.splitContainer3.Name = "splitContainer3";
+            // 
+            // splitContainer3.Panel1
+            // 
+            this.splitContainer3.Panel1.Controls.Add(this.groupBox1);
+            // 
+            // splitContainer3.Panel2
+            // 
+            this.splitContainer3.Panel2.Controls.Add(this.groupBox2);
+            this.splitContainer3.Size = new System.Drawing.Size(782, 174);
+            this.splitContainer3.SplitterDistance = 400;
+            this.splitContainer3.TabIndex = 5;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.txt_hdsohoadon);
+            this.groupBox1.Controls.Add(this.btn_hdcancel);
+            this.groupBox1.Controls.Add(this.btn_hdok);
+            this.groupBox1.Controls.Add(this.dtm_hdgiora);
+            this.groupBox1.Controls.Add(this.dtm_hdgiovao);
+            this.groupBox1.Controls.Add(this.cmb_hdphong);
+            this.groupBox1.Controls.Add(this.lb_giora);
+            this.groupBox1.Controls.Add(this.lb_giovao);
+            this.groupBox1.Controls.Add(this.lb_phong);
+            this.groupBox1.Controls.Add(this.lb_sohoadon);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox1.Location = new System.Drawing.Point(0, 0);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(0);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(400, 174);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "THÔNG TIN HÓA ĐƠN";
+            // 
+            // txt_hdsohoadon
+            // 
+            this.txt_hdsohoadon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txt_hdsohoadon.Enabled = false;
+            this.txt_hdsohoadon.Location = new System.Drawing.Point(130, 29);
+            this.txt_hdsohoadon.Name = "txt_hdsohoadon";
+            this.txt_hdsohoadon.Size = new System.Drawing.Size(161, 20);
+            this.txt_hdsohoadon.TabIndex = 7;
+            // 
+            // btn_hdcancel
+            // 
+            this.btn_hdcancel.Location = new System.Drawing.Point(284, 130);
+            this.btn_hdcancel.Name = "btn_hdcancel";
+            this.btn_hdcancel.Size = new System.Drawing.Size(67, 23);
+            this.btn_hdcancel.TabIndex = 6;
+            this.btn_hdcancel.Text = "Cancel";
+            this.btn_hdcancel.UseVisualStyleBackColor = true;
+            this.btn_hdcancel.Visible = false;
+            this.btn_hdcancel.Click += new System.EventHandler(this.btn_hdcancel_Click);
+            // 
+            // btn_hdok
+            // 
+            this.btn_hdok.Location = new System.Drawing.Point(284, 98);
+            this.btn_hdok.Name = "btn_hdok";
+            this.btn_hdok.Size = new System.Drawing.Size(67, 23);
+            this.btn_hdok.TabIndex = 6;
+            this.btn_hdok.Text = "OK";
+            this.btn_hdok.UseVisualStyleBackColor = true;
+            this.btn_hdok.Visible = false;
+            this.btn_hdok.Click += new System.EventHandler(this.btn_hdok_Click);
+            // 
+            // dtm_hdgiora
+            // 
+            this.dtm_hdgiora.Enabled = false;
+            this.dtm_hdgiora.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dtm_hdgiora.Location = new System.Drawing.Point(130, 135);
+            this.dtm_hdgiora.Name = "dtm_hdgiora";
+            this.dtm_hdgiora.Size = new System.Drawing.Size(123, 20);
+            this.dtm_hdgiora.TabIndex = 3;
+            this.dtm_hdgiora.Value = new System.DateTime(2016, 4, 9, 19, 29, 1, 0);
+            this.dtm_hdgiora.Visible = false;
+            // 
+            // dtm_hdgiovao
+            // 
+            this.dtm_hdgiovao.Enabled = false;
+            this.dtm_hdgiovao.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dtm_hdgiovao.Location = new System.Drawing.Point(130, 100);
+            this.dtm_hdgiovao.Name = "dtm_hdgiovao";
+            this.dtm_hdgiovao.Size = new System.Drawing.Size(123, 20);
+            this.dtm_hdgiovao.TabIndex = 3;
+            this.dtm_hdgiovao.Value = new System.DateTime(2016, 4, 8, 10, 9, 57, 0);
+            // 
+            // cmb_hdphong
+            // 
+            this.cmb_hdphong.FormattingEnabled = true;
+            this.cmb_hdphong.Location = new System.Drawing.Point(130, 64);
+            this.cmb_hdphong.Margin = new System.Windows.Forms.Padding(0);
+            this.cmb_hdphong.Name = "cmb_hdphong";
+            this.cmb_hdphong.Size = new System.Drawing.Size(123, 21);
+            this.cmb_hdphong.TabIndex = 2;
+            // 
+            // lb_giora
+            // 
+            this.lb_giora.AutoSize = true;
+            this.lb_giora.Location = new System.Drawing.Point(29, 140);
+            this.lb_giora.Name = "lb_giora";
+            this.lb_giora.Size = new System.Drawing.Size(35, 13);
+            this.lb_giora.TabIndex = 0;
+            this.lb_giora.Text = "Giờ ra";
+            // 
+            // lb_giovao
+            // 
+            this.lb_giovao.AutoSize = true;
+            this.lb_giovao.Location = new System.Drawing.Point(29, 104);
+            this.lb_giovao.Name = "lb_giovao";
+            this.lb_giovao.Size = new System.Drawing.Size(44, 13);
+            this.lb_giovao.TabIndex = 0;
+            this.lb_giovao.Text = "Giờ vào";
+            // 
+            // lb_phong
+            // 
+            this.lb_phong.AutoSize = true;
+            this.lb_phong.Location = new System.Drawing.Point(29, 68);
+            this.lb_phong.Name = "lb_phong";
+            this.lb_phong.Size = new System.Drawing.Size(38, 13);
+            this.lb_phong.TabIndex = 0;
+            this.lb_phong.Text = "Phòng";
+            // 
+            // lb_sohoadon
+            // 
+            this.lb_sohoadon.AutoSize = true;
+            this.lb_sohoadon.Location = new System.Drawing.Point(29, 32);
+            this.lb_sohoadon.Name = "lb_sohoadon";
+            this.lb_sohoadon.Size = new System.Drawing.Size(63, 13);
+            this.lb_sohoadon.TabIndex = 0;
+            this.lb_sohoadon.Text = "Số hóa đơn";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.nud_hddv_soluong);
+            this.groupBox2.Controls.Add(this.btn_hd_save);
+            this.groupBox2.Controls.Add(this.label3);
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Controls.Add(this.txt_hdmadv);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox2.Location = new System.Drawing.Point(0, 0);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(378, 174);
+            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Hóa đơn - Dịch vụ";
+            // 
+            // nud_hddv_soluong
+            // 
+            this.nud_hddv_soluong.Location = new System.Drawing.Point(101, 67);
+            this.nud_hddv_soluong.Name = "nud_hddv_soluong";
+            this.nud_hddv_soluong.Size = new System.Drawing.Size(120, 20);
+            this.nud_hddv_soluong.TabIndex = 5;
+            // 
+            // btn_hd_save
+            // 
+            this.btn_hd_save.Location = new System.Drawing.Point(101, 101);
+            this.btn_hd_save.Name = "btn_hd_save";
+            this.btn_hd_save.Size = new System.Drawing.Size(75, 23);
+            this.btn_hd_save.TabIndex = 4;
+            this.btn_hd_save.Text = "Lưu";
+            this.btn_hd_save.UseVisualStyleBackColor = true;
+            this.btn_hd_save.Click += new System.EventHandler(this.btn_hd_save_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(33, 69);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(49, 13);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "Số lượng";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(30, 35);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(44, 13);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Dịch vụ";
+            // 
+            // txt_hdmadv
+            // 
+            this.txt_hdmadv.Enabled = false;
+            this.txt_hdmadv.Location = new System.Drawing.Point(101, 32);
+            this.txt_hdmadv.Name = "txt_hdmadv";
+            this.txt_hdmadv.Size = new System.Drawing.Size(156, 20);
+            this.txt_hdmadv.TabIndex = 1;
+            // 
             // tabControl2
             // 
             this.tabControl2.Controls.Add(this.tabPage5);
             this.tabControl2.Controls.Add(this.tabPage6);
             this.tabControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tabControl2.Location = new System.Drawing.Point(0, 246);
+            this.tabControl2.Location = new System.Drawing.Point(0, 201);
             this.tabControl2.Margin = new System.Windows.Forms.Padding(0);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.Padding = new System.Drawing.Point(0, 0);
             this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(782, 231);
+            this.tabControl2.Size = new System.Drawing.Size(782, 276);
             this.tabControl2.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight;
             this.tabControl2.TabIndex = 4;
             // 
@@ -320,7 +518,7 @@
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(774, 205);
+            this.tabPage5.Size = new System.Drawing.Size(774, 250);
             this.tabPage5.TabIndex = 0;
             this.tabPage5.Text = "Hóa đơn đang hoạt động";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -338,13 +536,15 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.dgv_hoadondichvu);
-            this.splitContainer2.Size = new System.Drawing.Size(768, 199);
+            this.splitContainer2.Size = new System.Drawing.Size(768, 244);
             this.splitContainer2.SplitterDistance = 385;
             this.splitContainer2.TabIndex = 0;
             // 
             // dgv_hoadonhd
             // 
             this.dgv_hoadonhd.AllowUserToAddRows = false;
+            this.dgv_hoadonhd.AllowUserToDeleteRows = false;
+            this.dgv_hoadonhd.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgv_hoadonhd.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
@@ -373,7 +573,9 @@
             this.dgv_hoadonhd.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgv_hoadonhd.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv_hoadonhd.Location = new System.Drawing.Point(0, 0);
+            this.dgv_hoadonhd.MultiSelect = false;
             this.dgv_hoadonhd.Name = "dgv_hoadonhd";
+            this.dgv_hoadonhd.ReadOnly = true;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -382,9 +584,11 @@
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgv_hoadonhd.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.dgv_hoadonhd.RowHeadersVisible = false;
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgv_hoadonhd.RowsDefaultCellStyle = dataGridViewCellStyle5;
-            this.dgv_hoadonhd.Size = new System.Drawing.Size(385, 199);
+            this.dgv_hoadonhd.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgv_hoadonhd.Size = new System.Drawing.Size(385, 244);
             this.dgv_hoadonhd.TabIndex = 2;
             this.dgv_hoadonhd.Click += new System.EventHandler(this.dgv_hoadonhd_Click);
             // 
@@ -392,12 +596,14 @@
             // 
             this.hdhd_sohoadon.HeaderText = "Số hóa đơn";
             this.hdhd_sohoadon.Name = "hdhd_sohoadon";
+            this.hdhd_sohoadon.ReadOnly = true;
             this.hdhd_sohoadon.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // hdhd_phong
             // 
             this.hdhd_phong.HeaderText = "Phòng";
             this.hdhd_phong.Name = "hdhd_phong";
+            this.hdhd_phong.ReadOnly = true;
             this.hdhd_phong.Width = 80;
             // 
             // hdhd_giovao
@@ -405,10 +611,13 @@
             this.hdhd_giovao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.hdhd_giovao.HeaderText = "Giờ vào";
             this.hdhd_giovao.Name = "hdhd_giovao";
+            this.hdhd_giovao.ReadOnly = true;
             // 
             // dgv_hoadondichvu
             // 
             this.dgv_hoadondichvu.AllowUserToAddRows = false;
+            this.dgv_hoadondichvu.AllowUserToDeleteRows = false;
+            this.dgv_hoadondichvu.AllowUserToResizeRows = false;
             this.dgv_hoadondichvu.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
@@ -420,9 +629,9 @@
             this.dgv_hoadondichvu.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgv_hoadondichvu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_hoadondichvu.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column20,
-            this.Column21,
-            this.Column22});
+            this.hddv_madv,
+            this.hddv_tendv,
+            this.hddv_soluong});
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -435,23 +644,31 @@
             this.dgv_hoadondichvu.Location = new System.Drawing.Point(0, 0);
             this.dgv_hoadondichvu.MultiSelect = false;
             this.dgv_hoadondichvu.Name = "dgv_hoadondichvu";
-            this.dgv_hoadondichvu.Size = new System.Drawing.Size(379, 199);
+            this.dgv_hoadondichvu.ReadOnly = true;
+            this.dgv_hoadondichvu.RowHeadersVisible = false;
+            this.dgv_hoadondichvu.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgv_hoadondichvu.Size = new System.Drawing.Size(379, 244);
             this.dgv_hoadondichvu.TabIndex = 0;
+            this.dgv_hoadondichvu.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_hoadondichvu_CellClick);
             // 
-            // Column20
+            // hddv_madv
             // 
-            this.Column20.HeaderText = "Mã dịch vụ";
-            this.Column20.Name = "Column20";
+            this.hddv_madv.HeaderText = "Mã dịch vụ";
+            this.hddv_madv.Name = "hddv_madv";
+            this.hddv_madv.ReadOnly = true;
             // 
-            // Column21
+            // hddv_tendv
             // 
-            this.Column21.HeaderText = "Tên dịch vụ";
-            this.Column21.Name = "Column21";
+            this.hddv_tendv.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.hddv_tendv.HeaderText = "Tên dịch vụ";
+            this.hddv_tendv.Name = "hddv_tendv";
+            this.hddv_tendv.ReadOnly = true;
             // 
-            // Column22
+            // hddv_soluong
             // 
-            this.Column22.HeaderText = "Số lượng";
-            this.Column22.Name = "Column22";
+            this.hddv_soluong.HeaderText = "Số lượng";
+            this.hddv_soluong.Name = "hddv_soluong";
+            this.hddv_soluong.ReadOnly = true;
             // 
             // tabPage6
             // 
@@ -459,7 +676,7 @@
             this.tabPage6.Location = new System.Drawing.Point(4, 22);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(774, 205);
+            this.tabPage6.Size = new System.Drawing.Size(774, 250);
             this.tabPage6.TabIndex = 1;
             this.tabPage6.Text = "Kho hóa đơn";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -495,7 +712,7 @@
             this.dgv_khohoadon.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv_khohoadon.Location = new System.Drawing.Point(3, 3);
             this.dgv_khohoadon.Name = "dgv_khohoadon";
-            this.dgv_khohoadon.Size = new System.Drawing.Size(768, 199);
+            this.dgv_khohoadon.Size = new System.Drawing.Size(768, 244);
             this.dgv_khohoadon.TabIndex = 0;
             // 
             // Column14
@@ -629,181 +846,6 @@
             this.toolStripSeparator11.Name = "toolStripSeparator11";
             this.toolStripSeparator11.Size = new System.Drawing.Size(6, 27);
             // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.btn_hddone);
-            this.groupBox2.Controls.Add(this.dud_hdsl);
-            this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.txt_hdmadv);
-            this.groupBox2.Location = new System.Drawing.Point(440, 61);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(287, 130);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Hóa đơn - Dịch vụ";
-            // 
-            // btn_hddone
-            // 
-            this.btn_hddone.Location = new System.Drawing.Point(167, 101);
-            this.btn_hddone.Name = "btn_hddone";
-            this.btn_hddone.Size = new System.Drawing.Size(75, 23);
-            this.btn_hddone.TabIndex = 4;
-            this.btn_hddone.Text = "Done";
-            this.btn_hddone.UseVisualStyleBackColor = true;
-            this.btn_hddone.Visible = false;
-            // 
-            // dud_hdsl
-            // 
-            this.dud_hdsl.Location = new System.Drawing.Point(102, 69);
-            this.dud_hdsl.Name = "dud_hdsl";
-            this.dud_hdsl.Size = new System.Drawing.Size(155, 20);
-            this.dud_hdsl.TabIndex = 2;
-            this.dud_hdsl.Text = "Nhập số lượng";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(33, 69);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(49, 13);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "Số lượng";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(30, 35);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(44, 13);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Dịch vụ";
-            // 
-            // txt_hdmadv
-            // 
-            this.txt_hdmadv.Enabled = false;
-            this.txt_hdmadv.Location = new System.Drawing.Point(101, 32);
-            this.txt_hdmadv.Name = "txt_hdmadv";
-            this.txt_hdmadv.Size = new System.Drawing.Size(156, 20);
-            this.txt_hdmadv.TabIndex = 1;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.txt_hdsohoadon);
-            this.groupBox1.Controls.Add(this.btn_hdcancel);
-            this.groupBox1.Controls.Add(this.btn_hdok);
-            this.groupBox1.Controls.Add(this.dtm_hdgiora);
-            this.groupBox1.Controls.Add(this.dtm_hdgiovao);
-            this.groupBox1.Controls.Add(this.cmb_hdphong);
-            this.groupBox1.Controls.Add(this.lb_giora);
-            this.groupBox1.Controls.Add(this.lb_giovao);
-            this.groupBox1.Controls.Add(this.lb_phong);
-            this.groupBox1.Controls.Add(this.lb_sohoadon);
-            this.groupBox1.Location = new System.Drawing.Point(45, 42);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(0);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(364, 167);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "THÔNG TIN HÓA ĐƠN";
-            // 
-            // txt_hdsohoadon
-            // 
-            this.txt_hdsohoadon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txt_hdsohoadon.Enabled = false;
-            this.txt_hdsohoadon.Location = new System.Drawing.Point(130, 29);
-            this.txt_hdsohoadon.Name = "txt_hdsohoadon";
-            this.txt_hdsohoadon.Size = new System.Drawing.Size(161, 20);
-            this.txt_hdsohoadon.TabIndex = 7;
-            // 
-            // btn_hdcancel
-            // 
-            this.btn_hdcancel.Location = new System.Drawing.Point(284, 130);
-            this.btn_hdcancel.Name = "btn_hdcancel";
-            this.btn_hdcancel.Size = new System.Drawing.Size(67, 23);
-            this.btn_hdcancel.TabIndex = 6;
-            this.btn_hdcancel.Text = "Cancel";
-            this.btn_hdcancel.UseVisualStyleBackColor = true;
-            this.btn_hdcancel.Visible = false;
-            this.btn_hdcancel.Click += new System.EventHandler(this.btn_hdcancel_Click);
-            // 
-            // btn_hdok
-            // 
-            this.btn_hdok.Location = new System.Drawing.Point(284, 98);
-            this.btn_hdok.Name = "btn_hdok";
-            this.btn_hdok.Size = new System.Drawing.Size(67, 23);
-            this.btn_hdok.TabIndex = 6;
-            this.btn_hdok.Text = "OK";
-            this.btn_hdok.UseVisualStyleBackColor = true;
-            this.btn_hdok.Visible = false;
-            this.btn_hdok.Click += new System.EventHandler(this.btn_hdok_Click);
-            // 
-            // dtm_hdgiora
-            // 
-            this.dtm_hdgiora.Enabled = false;
-            this.dtm_hdgiora.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dtm_hdgiora.Location = new System.Drawing.Point(130, 135);
-            this.dtm_hdgiora.Name = "dtm_hdgiora";
-            this.dtm_hdgiora.Size = new System.Drawing.Size(123, 20);
-            this.dtm_hdgiora.TabIndex = 3;
-            this.dtm_hdgiora.Value = new System.DateTime(2016, 4, 9, 19, 29, 1, 0);
-            this.dtm_hdgiora.Visible = false;
-            // 
-            // dtm_hdgiovao
-            // 
-            this.dtm_hdgiovao.Enabled = false;
-            this.dtm_hdgiovao.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dtm_hdgiovao.Location = new System.Drawing.Point(130, 100);
-            this.dtm_hdgiovao.Name = "dtm_hdgiovao";
-            this.dtm_hdgiovao.Size = new System.Drawing.Size(123, 20);
-            this.dtm_hdgiovao.TabIndex = 3;
-            this.dtm_hdgiovao.Value = new System.DateTime(2016, 4, 8, 10, 9, 57, 0);
-            // 
-            // cmb_hdphong
-            // 
-            this.cmb_hdphong.FormattingEnabled = true;
-            this.cmb_hdphong.Location = new System.Drawing.Point(130, 64);
-            this.cmb_hdphong.Margin = new System.Windows.Forms.Padding(0);
-            this.cmb_hdphong.Name = "cmb_hdphong";
-            this.cmb_hdphong.Size = new System.Drawing.Size(123, 21);
-            this.cmb_hdphong.TabIndex = 2;
-            // 
-            // lb_giora
-            // 
-            this.lb_giora.AutoSize = true;
-            this.lb_giora.Location = new System.Drawing.Point(29, 140);
-            this.lb_giora.Name = "lb_giora";
-            this.lb_giora.Size = new System.Drawing.Size(35, 13);
-            this.lb_giora.TabIndex = 0;
-            this.lb_giora.Text = "Giờ ra";
-            // 
-            // lb_giovao
-            // 
-            this.lb_giovao.AutoSize = true;
-            this.lb_giovao.Location = new System.Drawing.Point(29, 104);
-            this.lb_giovao.Name = "lb_giovao";
-            this.lb_giovao.Size = new System.Drawing.Size(44, 13);
-            this.lb_giovao.TabIndex = 0;
-            this.lb_giovao.Text = "Giờ vào";
-            // 
-            // lb_phong
-            // 
-            this.lb_phong.AutoSize = true;
-            this.lb_phong.Location = new System.Drawing.Point(29, 68);
-            this.lb_phong.Name = "lb_phong";
-            this.lb_phong.Size = new System.Drawing.Size(38, 13);
-            this.lb_phong.TabIndex = 0;
-            this.lb_phong.Text = "Phòng";
-            // 
-            // lb_sohoadon
-            // 
-            this.lb_sohoadon.AutoSize = true;
-            this.lb_sohoadon.Location = new System.Drawing.Point(29, 32);
-            this.lb_sohoadon.Name = "lb_sohoadon";
-            this.lb_sohoadon.Size = new System.Drawing.Size(63, 13);
-            this.lb_sohoadon.TabIndex = 0;
-            this.lb_sohoadon.Text = "Số hóa đơn";
-            // 
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.RosyBrown;
@@ -921,12 +963,48 @@
             this.dgv_dichvu.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dgv_dichvu.Location = new System.Drawing.Point(3, 214);
             this.dgv_dichvu.Name = "dgv_dichvu";
+            this.dgv_dichvu.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_dichvu.Size = new System.Drawing.Size(776, 260);
             this.dgv_dichvu.TabIndex = 8;
             this.dgv_dichvu.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_dichvu_CellClick);
             // 
+            // madichvu
+            // 
+            this.madichvu.HeaderText = "Mã dịch vụ";
+            this.madichvu.Name = "madichvu";
+            // 
+            // tendichvu
+            // 
+            this.tendichvu.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.tendichvu.HeaderText = "Tên dịch vụ";
+            this.tendichvu.Name = "tendichvu";
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Loại dịch vụ";
+            this.Column1.Name = "Column1";
+            // 
+            // soluong
+            // 
+            this.soluong.HeaderText = "Số lượng";
+            this.soluong.Name = "soluong";
+            // 
+            // dongia
+            // 
+            this.dongia.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dongia.HeaderText = "Đơn giá";
+            this.dongia.Name = "dongia";
+            // 
+            // donvi
+            // 
+            this.donvi.HeaderText = "ĐVT";
+            this.donvi.Name = "donvi";
+            // 
             // groupBox3
             // 
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox3.Controls.Add(this.btn_dv_cancel);
             this.groupBox3.Controls.Add(this.btn_dv_ok);
             this.groupBox3.Controls.Add(this.cmb_loaidv);
@@ -950,6 +1028,7 @@
             // 
             // btn_dv_cancel
             // 
+            this.btn_dv_cancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_dv_cancel.Location = new System.Drawing.Point(585, 56);
             this.btn_dv_cancel.Name = "btn_dv_cancel";
             this.btn_dv_cancel.Size = new System.Drawing.Size(75, 23);
@@ -957,9 +1036,11 @@
             this.btn_dv_cancel.Text = "Cancel";
             this.btn_dv_cancel.UseVisualStyleBackColor = true;
             this.btn_dv_cancel.Visible = false;
+            this.btn_dv_cancel.Click += new System.EventHandler(this.btn_dv_cancel_Click);
             // 
             // btn_dv_ok
             // 
+            this.btn_dv_ok.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_dv_ok.Location = new System.Drawing.Point(585, 23);
             this.btn_dv_ok.Name = "btn_dv_ok";
             this.btn_dv_ok.Size = new System.Drawing.Size(75, 23);
@@ -996,6 +1077,8 @@
             // 
             // txt_dv_dvt
             // 
+            this.txt_dv_dvt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txt_dv_dvt.Enabled = false;
             this.txt_dv_dvt.Location = new System.Drawing.Point(398, 91);
             this.txt_dv_dvt.Name = "txt_dv_dvt";
@@ -1004,6 +1087,8 @@
             // 
             // txt_dv_dongia
             // 
+            this.txt_dv_dongia.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txt_dv_dongia.Enabled = false;
             this.txt_dv_dongia.Location = new System.Drawing.Point(398, 58);
             this.txt_dv_dongia.Name = "txt_dv_dongia";
@@ -1021,6 +1106,8 @@
             // 
             // txt_dv_soluong
             // 
+            this.txt_dv_soluong.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txt_dv_soluong.Enabled = false;
             this.txt_dv_soluong.Location = new System.Drawing.Point(398, 25);
             this.txt_dv_soluong.Name = "txt_dv_soluong";
@@ -1832,46 +1919,14 @@
             this.textBox1.Size = new System.Drawing.Size(109, 20);
             this.textBox1.TabIndex = 34;
             // 
-            // madichvu
-            // 
-            this.madichvu.HeaderText = "Mã dịch vụ";
-            this.madichvu.Name = "madichvu";
-            // 
-            // tendichvu
-            // 
-            this.tendichvu.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.tendichvu.HeaderText = "Tên dịch vụ";
-            this.tendichvu.Name = "tendichvu";
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Loại dịch vụ";
-            this.Column1.Name = "Column1";
-            // 
-            // soluong
-            // 
-            this.soluong.HeaderText = "Số lượng";
-            this.soluong.Name = "soluong";
-            // 
-            // dongia
-            // 
-            this.dongia.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dongia.HeaderText = "Đơn giá";
-            this.dongia.Name = "dongia";
-            // 
-            // donvi
-            // 
-            this.donvi.HeaderText = "ĐVT";
-            this.donvi.Name = "donvi";
-            // 
-            // Form1
+            // frm_main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(790, 604);
             this.Controls.Add(this.splitContainer1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Name = "Form1";
+            this.Name = "frm_main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quản lý";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -1881,6 +1936,15 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.splitContainer3.Panel1.ResumeLayout(false);
+            this.splitContainer3.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
+            this.splitContainer3.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_hddv_soluong)).EndInit();
             this.tabControl2.ResumeLayout(false);
             this.tabPage5.ResumeLayout(false);
             this.splitContainer2.Panel1.ResumeLayout(false);
@@ -1893,10 +1957,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgv_khohoadon)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.toolStrip2.ResumeLayout(false);
@@ -1955,8 +2015,7 @@
         private System.Windows.Forms.Label lb_phong;
         private System.Windows.Forms.Label lb_sohoadon;
         private System.Windows.Forms.DataGridView dataGridView5;
-        private System.Windows.Forms.Button btn_hddone;
-        private System.Windows.Forms.DomainUpDown dud_hdsl;
+        private System.Windows.Forms.Button btn_hd_save;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker dateTimePicker3;
@@ -2062,9 +2121,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn hdhd_phong;
         private System.Windows.Forms.DataGridViewTextBoxColumn hdhd_giovao;
         private System.Windows.Forms.DataGridView dgv_hoadondichvu;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column20;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column21;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column22;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.ToolStripButton toolStripButton15;
         private System.Windows.Forms.TabPage tabPage4;
@@ -2098,6 +2154,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn soluong;
         private System.Windows.Forms.DataGridViewTextBoxColumn dongia;
         private System.Windows.Forms.DataGridViewTextBoxColumn donvi;
+        private System.Windows.Forms.NumericUpDown nud_hddv_soluong;
+        private System.Windows.Forms.DataGridViewTextBoxColumn hddv_madv;
+        private System.Windows.Forms.DataGridViewTextBoxColumn hddv_tendv;
+        private System.Windows.Forms.DataGridViewTextBoxColumn hddv_soluong;
+        private System.Windows.Forms.SplitContainer splitContainer3;
     }
 }
 

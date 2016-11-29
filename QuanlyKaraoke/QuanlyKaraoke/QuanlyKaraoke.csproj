@@ -65,31 +65,34 @@
   <ItemGroup>
     <Compile Include="BLL\XuLyDichVu.cs" />
     <Compile Include="BLL\XuLyHoaDon.cs" />
+    <Compile Include="BLL\XuLyUser.cs" />
     <Compile Include="DAL\DAO.cs" />
     <Compile Include="DAL\DichVuDAO.cs" />
     <Compile Include="DAL\HoaDonDAO.cs" />
     <Compile Include="DAL\HoaDonDichVuDAO.cs" />
     <Compile Include="DAL\PhongDAO.cs" />
+    <Compile Include="DAL\UserDAO.cs" />
     <Compile Include="Entity\DichVu.cs" />
     <Compile Include="Entity\HoaDon.cs" />
     <Compile Include="Entity\Phong.cs" />
-    <Compile Include="GUI\Form1.cs">
+    <Compile Include="Entity\User.cs" />
+    <Compile Include="GUI\frm_main.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="GUI\frm_main.Designer.cs">
+      <DependentUpon>frm_main.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\Form2.cs">
+    <Compile Include="GUI\frm_add_dichvu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\Form2.Designer.cs">
-      <DependentUpon>Form2.cs</DependentUpon>
+    <Compile Include="GUI\frm_add_dichvu.Designer.cs">
+      <DependentUpon>frm_add_dichvu.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\Form3.cs">
+    <Compile Include="GUI\frm_login.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\Form3.Designer.cs">
-      <DependentUpon>Form3.cs</DependentUpon>
+    <Compile Include="GUI\frm_login.Designer.cs">
+      <DependentUpon>frm_login.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -99,32 +102,20 @@
     <Compile Include="GUI\hoadon.Designer.cs">
       <DependentUpon>hoadon.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\test1.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="GUI\test1.Designer.cs">
-      <DependentUpon>test1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\test2.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="GUI\test2.Designer.cs">
-      <DependentUpon>test2.cs</DependentUpon>
-    </Compile>
     <Compile Include="GUI\UImain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GUI\UImain.Designer.cs">
       <DependentUpon>UImain.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="GUI\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\frm_main.resx">
+      <DependentUpon>frm_main.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\Form2.resx">
-      <DependentUpon>Form2.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\frm_add_dichvu.resx">
+      <DependentUpon>frm_add_dichvu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\Form3.resx">
-      <DependentUpon>Form3.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\frm_login.resx">
+      <DependentUpon>frm_login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -138,12 +129,6 @@
     </Compile>
     <EmbeddedResource Include="GUI\hoadon.resx">
       <DependentUpon>hoadon.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\test1.resx">
-      <DependentUpon>test1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\test2.resx">
-      <DependentUpon>test2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\UImain.resx">
       <DependentUpon>UImain.cs</DependentUpon>

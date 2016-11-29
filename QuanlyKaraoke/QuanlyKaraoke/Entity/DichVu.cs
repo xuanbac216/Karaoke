@@ -30,5 +30,10 @@ namespace QuanlyKaraoke
             tenDichVu = tenDV;
             soLuong = sl;
         }
+        public DichVu(int maDV)
+        {
+            maDichVu = maDV;
+            
+        }
     }
 }

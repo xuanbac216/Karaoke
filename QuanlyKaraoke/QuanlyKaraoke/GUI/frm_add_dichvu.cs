@@ -31,51 +31,7 @@ namespace QuanlyKaraoke
         {
 
         }
-        //private void OpenConnection()
-        //{
-        //    try
-        //    {
-        //        conn.Open();
-
-        //    }
-        //    catch (MySqlException ex)
-        //    {
-        //        //When handling errors, you can your application's response based 
-        //        //on the error number.
-        //        //The two most common error numbers when connecting are as follows:
-        //        //0: Cannot connect to server.
-        //        //1045: Invalid user name and/or password.
-        //        switch (ex.Number)
-        //        {
-        //            case 0:
-        //                MessageBox.Show("Cannot connect to server.  Contact administrator");
-        //                break;
-
-        //            case 1045:
-        //                MessageBox.Show("Invalid username/password, please try again");
-        //                break;
-        //        }
-
-        //    }
-        //}
-        //public new void LoadDichvu()
-        //{
-        //    dgv_hddv.DataSource = null;
-        //    dgv_hddv.Rows.Clear();
-        //    ds = new DataSet();
-        //    #region Đổ dữ liệu bảng dịch vụ
-        //    string sSelectHoaDonDichVu = "select * from dichvu";
-        //    daKaraoke = new MySqlDataAdapter(sSelectHoaDonDichVu, conn);
-        //    daKaraoke.Fill(ds, "tbl_ChonHoaDonDichVu");
-        //    foreach (DataRow r in ds.Tables["tbl_ChonHoadonDichVu"].Rows)
-        //    {
-
-        //        dgv_hddv.Rows.Add(r[0], r[1], r[3]);
-        //    }
-        //    ds.Tables["tbl_ChonHoaDonDichVu"].Clear();
-        //    conn.Close();
-        //    #endregion
-        //}
+       
         public new void LoadDichvu()
         {
             dgv_hddv.DataSource = null;
@@ -117,6 +73,15 @@ namespace QuanlyKaraoke
             catch
             {
             }
+        }
+
+        private void btn_hddv_ok_Click(object sender, EventArgs e)
+        {
+            var soHd = txt_hddv_sohd.Text.ToString();
+            var maDv = txt_hddv_madv.Text.ToString();
+            var sl = nud_hddv_sl.Value.ToString();
+            XuLyHoaDon.ThemDichVu(soHd, maDv, sl);
+            this.Close();
         }
     }
 }

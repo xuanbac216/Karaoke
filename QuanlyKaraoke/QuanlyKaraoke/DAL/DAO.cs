@@ -32,8 +32,9 @@ namespace QuanlyKaraoke.DAL
             var dbName = "karaoke";
             var userName = "root";
             var password = "";
-            var connectionString = String.Format(@"server={0};userid={1};password={2};database={3}",
-                serverName, userName, password, dbName);
+            var charSet = "utf8";
+            var connectionString = String.Format(@"server={0};userid={1};password={2};database={3}; CharSet={4}",
+                serverName, userName, password, dbName, charSet);
             dbConnection.ConnectionString = connectionString;
         }
         public static void OpenConnection()

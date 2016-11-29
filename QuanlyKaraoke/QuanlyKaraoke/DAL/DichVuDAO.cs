@@ -80,7 +80,7 @@ namespace QuanlyKaraoke.DAL
             {
                 
                 MessageBox.Show("Thêm dịch vụ thất bại! Lỗi:" + exc);
-                throw exc;
+                
             }
             #endregion
 

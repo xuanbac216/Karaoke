@@ -33,7 +33,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.button1 = new System.Windows.Forms.Button();
+            this.nud_hddv_sl = new System.Windows.Forms.NumericUpDown();
+            this.btn_hddv_ok = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.txt_hddv_madv = new System.Windows.Forms.TextBox();
@@ -43,25 +44,24 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.dgv_hddv = new System.Windows.Forms.DataGridView();
+            this.dgv_dsdv_madv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_dsdv_tendv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_dsdv_sl = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.dgv_hddvchon = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgv_dsdv_madv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgv_dsdv_tendv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgv_dsdv_sl = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nud_hddv_sl = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_hddv_sl)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_hddv)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_hddvchon)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nud_hddv_sl)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -75,7 +75,7 @@
             // 
             this.splitContainer1.Panel1.BackColor = System.Drawing.Color.SlateBlue;
             this.splitContainer1.Panel1.Controls.Add(this.nud_hddv_sl);
-            this.splitContainer1.Panel1.Controls.Add(this.button1);
+            this.splitContainer1.Panel1.Controls.Add(this.btn_hddv_ok);
             this.splitContainer1.Panel1.Controls.Add(this.button2);
             this.splitContainer1.Panel1.Controls.Add(this.label3);
             this.splitContainer1.Panel1.Controls.Add(this.txt_hddv_madv);
@@ -90,14 +90,32 @@
             this.splitContainer1.SplitterDistance = 130;
             this.splitContainer1.TabIndex = 0;
             // 
-            // button1
+            // nud_hddv_sl
             // 
-            this.button1.Location = new System.Drawing.Point(261, 54);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(71, 23);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "OK";
-            this.button1.UseVisualStyleBackColor = true;
+            this.nud_hddv_sl.Location = new System.Drawing.Point(109, 92);
+            this.nud_hddv_sl.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nud_hddv_sl.Name = "nud_hddv_sl";
+            this.nud_hddv_sl.Size = new System.Drawing.Size(120, 20);
+            this.nud_hddv_sl.TabIndex = 8;
+            this.nud_hddv_sl.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // btn_hddv_ok
+            // 
+            this.btn_hddv_ok.Location = new System.Drawing.Point(261, 54);
+            this.btn_hddv_ok.Name = "btn_hddv_ok";
+            this.btn_hddv_ok.Size = new System.Drawing.Size(71, 23);
+            this.btn_hddv_ok.TabIndex = 7;
+            this.btn_hddv_ok.Text = "OK";
+            this.btn_hddv_ok.UseVisualStyleBackColor = true;
+            this.btn_hddv_ok.Click += new System.EventHandler(this.btn_hddv_ok_Click);
             // 
             // button2
             // 
@@ -178,6 +196,9 @@
             // 
             // dgv_hddv
             // 
+            this.dgv_hddv.AllowUserToAddRows = false;
+            this.dgv_hddv.AllowUserToDeleteRows = false;
+            this.dgv_hddv.AllowUserToResizeRows = false;
             this.dgv_hddv.BackgroundColor = System.Drawing.Color.SlateBlue;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
@@ -194,12 +215,37 @@
             this.dgv_dsdv_sl});
             this.dgv_hddv.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv_hddv.Location = new System.Drawing.Point(3, 3);
+            this.dgv_hddv.MultiSelect = false;
             this.dgv_hddv.Name = "dgv_hddv";
+            this.dgv_hddv.ReadOnly = true;
+            this.dgv_hddv.RowHeadersVisible = false;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgv_hddv.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgv_hddv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_hddv.Size = new System.Drawing.Size(365, 240);
             this.dgv_hddv.TabIndex = 0;
+            this.dgv_hddv.SelectionChanged += new System.EventHandler(this.dgv_hddv_Click);
             this.dgv_hddv.Click += new System.EventHandler(this.dgv_hddv_Click);
+            // 
+            // dgv_dsdv_madv
+            // 
+            this.dgv_dsdv_madv.HeaderText = "Mã dịch vụ";
+            this.dgv_dsdv_madv.Name = "dgv_dsdv_madv";
+            this.dgv_dsdv_madv.ReadOnly = true;
+            // 
+            // dgv_dsdv_tendv
+            // 
+            this.dgv_dsdv_tendv.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dgv_dsdv_tendv.HeaderText = "Tên dịch vụ";
+            this.dgv_dsdv_tendv.Name = "dgv_dsdv_tendv";
+            this.dgv_dsdv_tendv.ReadOnly = true;
+            // 
+            // dgv_dsdv_sl
+            // 
+            this.dgv_dsdv_sl.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dgv_dsdv_sl.HeaderText = "Số lượng hiện có";
+            this.dgv_dsdv_sl.Name = "dgv_dsdv_sl";
+            this.dgv_dsdv_sl.ReadOnly = true;
             // 
             // tabPage2
             // 
@@ -254,30 +300,6 @@
             this.dataGridViewTextBoxColumn3.HeaderText = "Số lượng";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             // 
-            // dgv_dsdv_madv
-            // 
-            this.dgv_dsdv_madv.HeaderText = "Mã dịch vụ";
-            this.dgv_dsdv_madv.Name = "dgv_dsdv_madv";
-            // 
-            // dgv_dsdv_tendv
-            // 
-            this.dgv_dsdv_tendv.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dgv_dsdv_tendv.HeaderText = "Tên dịch vụ";
-            this.dgv_dsdv_tendv.Name = "dgv_dsdv_tendv";
-            // 
-            // dgv_dsdv_sl
-            // 
-            this.dgv_dsdv_sl.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dgv_dsdv_sl.HeaderText = "Số lượng hiện có";
-            this.dgv_dsdv_sl.Name = "dgv_dsdv_sl";
-            // 
-            // nud_hddv_sl
-            // 
-            this.nud_hddv_sl.Location = new System.Drawing.Point(109, 92);
-            this.nud_hddv_sl.Name = "nud_hddv_sl";
-            this.nud_hddv_sl.Size = new System.Drawing.Size(120, 20);
-            this.nud_hddv_sl.TabIndex = 8;
-            // 
             // frm_hddv
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -292,12 +314,12 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.nud_hddv_sl)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_hddv)).EndInit();
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_hddvchon)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nud_hddv_sl)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -312,7 +334,7 @@
         private System.Windows.Forms.Label lb_sohoadon;
         private System.Windows.Forms.TextBox txt_hddv_madv;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_hddv_ok;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridView dgv_hddv;

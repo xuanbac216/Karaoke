@@ -39,6 +39,25 @@ namespace QuanlyKaraoke.BLL
 
             #endregion
         }
+        internal static void DeleteDichVu(string maDV)
+        {
+            var lstDangDung = HoaDonDichVuDAO.GetDichVuDangDung();
+            #region Kiểm tra dịch vụ có đang được sử dụng
+            int i = 0;
+            while (i < lstDangDung.Count)
+            {
+                if (lstDangDung[i].maDichVu.ToString().Equals(maDV))
+                {
+                    MessageBox.Show("ERROR : Có Phòng Dang Sử Dụng Dịch Vụ này!!!");
+                    return;
+                }
+                i++;
+            }
+            #endregion
+            #region Xoa dich vu 
+            DichVuDAO.XoaDichVu(maDV);
+            #endregion
+        }
         internal static void ThemDichVu(string maDV, string tenDV, string loaiDV, string sl, string donGia, string dVT)
         {
             DichVuDAO.ThemDichVu(maDV, tenDV, loaiDV, sl, donGia, dVT);

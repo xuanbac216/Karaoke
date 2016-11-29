@@ -25,15 +25,13 @@ C:\Users\Bac Nice\Documents\Karaoke\QuanlyKaraoke\QuanlyKaraoke\obj\Debug\Quanly
 C:\Users\Bac Nice\Documents\Karaoke\QuanlyKaraoke\QuanlyKaraoke\bin\Debug\QuanlyKaraoke.exe
 C:\Users\Bac Nice\Documents\Karaoke\QuanlyKaraoke\QuanlyKaraoke\bin\Debug\QuanlyKaraoke.pdb
 C:\Users\Bac Nice\Documents\Karaoke\QuanlyKaraoke\QuanlyKaraoke\obj\Debug\QuanlyKaraoke.csprojResolveAssemblyReference.cache
-C:\Users\Bac Nice\Documents\Karaoke\QuanlyKaraoke\QuanlyKaraoke\obj\Debug\QuanlyKaraoke.Form1.resources
 C:\Users\Bac Nice\Documents\Karaoke\QuanlyKaraoke\QuanlyKaraoke\obj\Debug\QuanlyKaraoke.frm_hddv.resources
-C:\Users\Bac Nice\Documents\Karaoke\QuanlyKaraoke\QuanlyKaraoke\obj\Debug\QuanlyKaraoke.Form3.resources
 C:\Users\Bac Nice\Documents\Karaoke\QuanlyKaraoke\QuanlyKaraoke\obj\Debug\QuanlyKaraoke.Properties.Resources.resources
 C:\Users\Bac Nice\Documents\Karaoke\QuanlyKaraoke\QuanlyKaraoke\obj\Debug\QuanlyKaraoke.hoadon.resources
-C:\Users\Bac Nice\Documents\Karaoke\QuanlyKaraoke\QuanlyKaraoke\obj\Debug\QuanlyKaraoke.test1.resources
-C:\Users\Bac Nice\Documents\Karaoke\QuanlyKaraoke\QuanlyKaraoke\obj\Debug\QuanlyKaraoke.test2.resources
 C:\Users\Bac Nice\Documents\Karaoke\QuanlyKaraoke\QuanlyKaraoke\obj\Debug\QuanlyKaraoke.UImain.resources
 C:\Users\Bac Nice\Documents\Karaoke\QuanlyKaraoke\QuanlyKaraoke\obj\Debug\QuanlyKaraoke.csproj.GenerateResource.Cache
 C:\Users\Bac Nice\Documents\Karaoke\QuanlyKaraoke\QuanlyKaraoke\bin\Debug\MySql.Data.dll
 C:\Users\Bac Nice\Documents\Karaoke\QuanlyKaraoke\QuanlyKaraoke\bin\Debug\MySql.Data.Entity.dll
 C:\Users\Bac Nice\Documents\Karaoke\QuanlyKaraoke\QuanlyKaraoke\obj\Debug\QuanlyKaraoke.csproj.QuanlyKaraoke.exe.config
+C:\Users\Bac Nice\Documents\Karaoke\QuanlyKaraoke\QuanlyKaraoke\obj\Debug\QuanlyKaraoke.frm_main.resources
+C:\Users\Bac Nice\Documents\Karaoke\QuanlyKaraoke\QuanlyKaraoke\obj\Debug\QuanlyKaraoke.frm_login.resources

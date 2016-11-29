@@ -13,7 +13,7 @@ using QuanlyKaraoke.Entity;
 
 namespace QuanlyKaraoke
 {
-    public partial class Form1 : Form
+    public partial class frm_main : Form
     {
         DataSet ds;
         static string connetionString = "server=localhost;database=karaoke;uid=root;pwd=;";
@@ -22,7 +22,7 @@ namespace QuanlyKaraoke
         DataTable table = new DataTable();
         string testRoom;
         public int check;
-        public Form1()
+        public frm_main()
         {
             InitializeComponent();
             OpenConnection();
@@ -166,8 +166,6 @@ namespace QuanlyKaraoke
             LoadCmbPhong();
             LoadDichvu();
             #endregion
-            
-
         }
        
         public void ExcuteHoaDonDichVu(string soHD)
@@ -178,7 +176,6 @@ namespace QuanlyKaraoke
 
             foreach (DichVu r in lst)
             {
-
                 dgv_hoadondichvu.Rows.Add(r.maDichVu, r.tenDichVu, r.soLuong);
             }
             
@@ -235,8 +232,9 @@ namespace QuanlyKaraoke
         public void ThemHoaDon()
         {
             OpenRoom(cmb_hdphong.SelectedValue.ToString());
-            var add = XuLyHoaDon.ThemHoaDon(cmb_hdphong.SelectedValue.ToString());
-            if (add) MessageBox.Show("Thêm hóa đơn thành công!");
+            var check = XuLyHoaDon.ThemHoaDon(cmb_hdphong.SelectedValue.ToString());
+            if (check == null) MessageBox.Show("Thêm hóa đơn thành công!");
+            else MessageBox.Show(check);
             LoadHoaDonHoatDong();
             LoadKhoHoaDon();
             LoadCmbPhong();
@@ -330,8 +328,8 @@ namespace QuanlyKaraoke
             {
                 var hddv = new frm_hddv();
                 hddv.sohd = txt_hdsohoadon.Text;
-                hddv.Show();
-                
+                hddv.ShowDialog();
+                ExcuteHoaDonDichVu(hddv.sohd);
             }
         }
 
@@ -361,7 +359,8 @@ namespace QuanlyKaraoke
         private void btn_dv_xoa_Click(object sender, EventArgs e)
         {
             if (txt_madv.Text.Equals(null) || txt_madv.Text.Equals("")) return;
-            XuLyDichVu.XoaDichVu(txt_madv.Text.ToString());
+            //XuLyDichVu.XoaDichVu(txt_madv.Text.ToString());
+            XuLyDichVu.DeleteDichVu(txt_madv.Text.ToString());
             LoadDichvu();
         }
         private void ResetDichVu()
@@ -371,17 +370,24 @@ namespace QuanlyKaraoke
             txt_dv_soluong.Text = "";
             txt_dv_dongia.Text = "";
             txt_dv_dvt.Text = "";
+            btn_dv_ok.Visible = false;
+            btn_dv_cancel.Visible = false;
         }
-        private void btn_dv_them_Click(object sender, EventArgs e)
+        private void OnDichVu()
         {
-            txt_madv.Enabled=true;
+            txt_madv.Enabled = true;
             txt_tendv.Enabled = true;
             txt_dv_soluong.Enabled = true;
             txt_dv_dongia.Enabled = true;
             txt_dv_dvt.Enabled = true;
             btn_dv_ok.Visible = true;
             btn_dv_cancel.Visible = true;
+        }
+        private void btn_dv_them_Click(object sender, EventArgs e)
+        {
             ResetDichVu();
+            OnDichVu();
+            
         }
 
         private void btn_dv_ok_Click(object sender, EventArgs e)
@@ -394,6 +400,30 @@ namespace QuanlyKaraoke
             var dvt = txt_dv_dvt.Text;
             XuLyDichVu.ThemDichVu(maDv, tenDv, loaiDv, sl, dg, dvt);
             LoadDichvu();
+            ResetDichVu();
+        }
+
+        private void dgv_hoadondichvu_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridViewRow dt = dgv_hoadondichvu.SelectedRows[0];
+            txt_hdmadv.Text = dt.Cells["hddv_madv"].Value.ToString();
+            int soluong = Int16.Parse(dt.Cells["hddv_soluong"].Value.ToString());
+            nud_hddv_soluong.Value = soluong;
+        }
+
+        private void btn_hd_save_Click(object sender, EventArgs e)
+        {
+            var soHd = txt_hdsohoadon.Text.ToString();
+            var maDv = txt_hdmadv.Text.ToString();
+            var soLuong = nud_hddv_soluong.Value.ToString();
+            XuLyHoaDon.Update(soHd, maDv, soLuong);
+            ExcuteHoaDonDichVu(soHd);
+            
+        }
+
+        private void btn_dv_cancel_Click(object sender, EventArgs e)
+        {
+            ResetDichVu();
         }
     }
 }

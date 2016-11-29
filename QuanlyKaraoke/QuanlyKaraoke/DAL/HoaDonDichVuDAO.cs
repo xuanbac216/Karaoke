@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -47,6 +48,42 @@ namespace QuanlyKaraoke.DAL
 
             return lst;
         }
+        internal static List<DichVu> GetDichVuDangDung()
+        {
+            var lst = new List<DichVu>();
+
+            #region 1. Open DbConnection
+            OpenConnection();
+
+            #endregion
+
+            #region 2. Xác định đối tượng truy vấn dữ liệu DbCommand
+            var cmd = dbConnection.CreateCommand();
+            cmd.CommandText = "select madv from hoadon_dichvu inner join hoadon on hoadon_dichvu.sohd = hoadon.sohd where trangthai=0";
+            #endregion
+
+            #region 3. Thực hiện truy vấn
+            var dr = cmd.ExecuteReader();
+            #endregion
+
+            #region 4. Xử lý kết quả truy vấn
+            while (true)
+            {
+                if (dr.Read() == false)
+                    break;
+                var maDichVu = dr.GetInt32(0);
+                var dv = new DichVu(maDichVu);
+                lst.Add(dv);
+            }
+            #endregion
+
+            #region 5. Giải phóng tài nguyên
+            dr.Close();
+            CloseConnection();
+            #endregion
+
+            return lst;
+        }
         internal static bool CheckDichVu(string maDv)
         {
             var lst = new List<DichVu>();
@@ -82,6 +119,68 @@ namespace QuanlyKaraoke.DAL
             return check;
             #endregion
 
+        }
+        internal static void Update (string soHD, string maDv, string soluong )
+        {
+            OpenConnection();
+            
+            #region 2. Xác định đối tượng truy vấn dữ liệu DbCommand
+            var cmd = dbConnection.CreateCommand();
+            cmd.CommandText = "UPDATE hoadon_dichvu SET soluong ='"+ soluong +"' WHERE sohd ='"+ soHD + "' and madv =' "+ maDv+ "'" ;
+            #endregion
+            
+            #region 3. Thực hiện truy vấn
+            try
+            {
+                cmd.ExecuteNonQuery();
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Loi" + ex.ToString());
+            }
+            #endregion
+
+            #region 4. Xử lý kết quả truy vấn
+
+            #endregion
+
+            #region 5. Giải phóng tài nguyên
+            CloseConnection();
+            
+            #endregion
+        }
+        internal static void ThemDichVu(string soHD, string maDv, string soluong)
+        {
+            OpenConnection();
+            #region 
+            var cmd = dbConnection.CreateCommand();
+            cmd.CommandText = "insert into hoadon_dichvu(sohd,madv,soluong) value(@sohd,@madv,@soluong)";
+            AddParam(cmd, "@sohd", DbType.Int32, soHD);
+            AddParam(cmd, "@madv", DbType.Int32, maDv);
+            AddParam(cmd, "@soluong", DbType.Int16, soluong);
+
+            #endregion
+
+            #region 3. Thực hiện truy vấn
+
+            try
+            {
+                cmd.ExecuteNonQuery();
+                
+            }
+            catch (Exception exc)
+            {
+                
+                MessageBox.Show("Thêm hóa đơn thất bại! Lỗi:" + exc);
+                
+            }
+            #endregion
+
+            #region 5. Giải phóng tài nguyên
+            CloseConnection();
+
+            #endregion
         }
     }
 }
