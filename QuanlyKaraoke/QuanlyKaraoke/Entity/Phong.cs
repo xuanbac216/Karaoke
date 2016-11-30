@@ -11,8 +11,8 @@ namespace QuanlyKaraoke.Entity
         private int _maPhong;
         private string _tenPhong;
         private string _giaPhong;
-        private string _loaiPhong;
-
+        private int _trangThai;
+        private string _moTa;
         public int MaPhong
         {
             get
@@ -52,30 +52,45 @@ namespace QuanlyKaraoke.Entity
             }
         }
 
-        public string LoaiPhong
+        public int TrangThai
         {
             get
             {
-                return _loaiPhong;
+                return _trangThai;
             }
 
             set
             {
-                _loaiPhong = value;
+                _trangThai = value;
             }
         }
+
+        public string MoTa
+        {
+            get
+            {
+                return _moTa;
+            }
+
+            set
+            {
+                _moTa = value;
+            }
+        }
+
         public Phong(int maPhong, string tenPhong)
         {
             this.MaPhong = maPhong;
             this.TenPhong = tenPhong;
            
         }
-        public Phong(int maPhong, string tenPhong, string giaPhong, string loaiPhong)
+        public Phong(int maPhong, string tenPhong, string giaPhong, int trangThai, string moTa)
         {
             this.MaPhong = maPhong;
             this.TenPhong = tenPhong;
             this.GiaPhong = giaPhong;
-            this.LoaiPhong = loaiPhong;
+            this.TrangThai = trangThai;
+            this.MoTa = moTa;
         }
         
     }

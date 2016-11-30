@@ -70,67 +70,47 @@ namespace QuanlyKaraoke
 
             }
         }
-        
+        #region XỬ LÝ HÓA ĐƠN
         public void LoadKhoHoaDon()
         {
             #region Đổ dữ liệu cho kho hóa đơn
             dgv_khohoadon.DataSource = null;
             dgv_khohoadon.Rows.Clear();
-            string sSelectHoadon = "select * from hoadon where trangthai=1";
-            daKaraoke = new MySqlDataAdapter(sSelectHoadon, conn);
-            daKaraoke.Fill(ds, "tbl_KhoHoaDon");
-            foreach (DataRow r in ds.Tables["tbl_KhoHoaDon"].Rows)
+            var lst = XuLyHoaDon.GetHoaDon();
+            foreach (HoaDon h in lst)
             {
-
-                dgv_khohoadon.Rows.Add(r[0], r[1], r[2], r[3], r[4], r[5]);
+                dgv_khohoadon.Rows.Add(h.SoHoaDon, h.MaPhong, h.KhachHang,h.DiaChi, h.GioVao,h.GioRa);
             }
-            ds.Tables["tbl_KhoHoaDon"].Clear();
             #endregion
         }
-        //public void LoadHoaDonHoatDong()
-        //{
-        //    dgv_hoadonhd.DataSource = null;
-        //    dgv_hoadonhd.Rows.Clear();
-        //    #region Đổ dữ liệu cho hóa đơn đang hoạt động
-        //    string sSelectHoadonhd = "select * from hoadon where trangthai=0";
-        //    daKaraoke = new MySqlDataAdapter(sSelectHoadonhd, conn);
-        //    daKaraoke.Fill(ds, "tbl_HoaDonHoatDong");
-        //    foreach (DataRow r in ds.Tables["tbl_HoaDonHoatDong"].Rows)
-        //    {
 
-        //        dgv_hoadonhd.Rows.Add(r[0], r[1], r[4]);
-        //    }
-        //    ds.Tables["tbl_HoaDonHoatDong"].Clear();
-        //    #endregion
-        //}
         public void LoadHoaDonHoatDong()
         {
             dgv_hoadonhd.DataSource = null;
             dgv_hoadonhd.Rows.Clear();
             #region Đổ dữ liệu cho hóa đơn đang hoạt động
-            var lst = XuLyHoaDon.GetHoaDon();
-            
+            var lst = XuLyHoaDon.GetHoaDonHoatDong();
+
             foreach (HoaDon h in lst)
             {
-
                 dgv_hoadonhd.Rows.Add(h.SoHoaDon, h.MaPhong, h.GioVao);
             }
             #endregion
         }
         public void LoadCmbPhong()
         {
-         
+
             #region Đổ dữ liệu cho combobox phòng
             DataTable cmb = new DataTable();
             cmb.Columns.Add("maphong");
             cmb.Columns.Add("tenphong");
             var lst = XuLyHoaDon.GetPhongTrong();
-            
+
             foreach (Phong p in lst)
             {
 
                 cmb.Rows.Add(p.MaPhong, p.TenPhong);
-                
+
             }
             cmb_hdphong.DataSource = cmb;
             cmb_hdphong.DisplayMember = "tenphong";
@@ -146,28 +126,11 @@ namespace QuanlyKaraoke
             var lst = XuLyDichVu.GetDichVu();
             foreach (DichVu dv in lst)
             {
-                dgv_dichvu.Rows.Add(dv.maDichVu,dv.tenDichVu, dv.loaiDichVu,dv.soLuong,dv.donGia,dv.dVT);
-               
+                dgv_dichvu.Rows.Add(dv.maDichVu, dv.tenDichVu, dv.loaiDichVu, dv.soLuong, dv.donGia, dv.dVT);
             }
             #endregion
         }
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            ds = new DataSet("dsKhoHoaDon");
 
-            #region Load form
-            txt_hdsohoadon.Text = "";
-            cmb_hdphong.Text = "";
-            dtm_hdgiovao.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-            dtm_hdgiora.Text = "";
-            
-            LoadKhoHoaDon();
-            LoadHoaDonHoatDong();
-            LoadCmbPhong();
-            LoadDichvu();
-            #endregion
-        }
-       
         public void ExcuteHoaDonDichVu(string soHD)
         {
             var lst = XuLyHoaDon.GetDichVuHoaDon(soHD);
@@ -178,37 +141,21 @@ namespace QuanlyKaraoke
             {
                 dgv_hoadondichvu.Rows.Add(r.maDichVu, r.tenDichVu, r.soLuong);
             }
-            
+
         }
-        //public void ExcuteDichVu()
-        //{
-        //    string sSelectHDDV = "select hd.madv, dv.tendv, hd.soluong from hoadon_dichvu as hd, dichvu as dv where hd.madv = dv.madv and sohd=" + txt_hdsohoadon.Text;
-        //    daKaraoke = new MySqlDataAdapter(sSelectHDDV, conn);
-        //    daKaraoke.Fill(ds, "tbl_HoaDonDichVu");
-        //    dgv_hoadondichvu.DataSource = null;
-        //    dgv_hoadondichvu.Rows.Clear();
-
-        //    foreach (DataRow r in ds.Tables["tbl_HoaDonDichVu"].Rows)
-        //    {
-
-        //        dgv_hoadondichvu.Rows.Add(r[0], r[1], r[2]);
-        //    }
-        //    ds.Tables["tbl_HoaDonDichVu"].Clear();
-        //}
-        public void OpenRoom(string maphong)
+        private void frm_main_Load(object sender, EventArgs e)
         {
-
-            string sOpen = "update phong set trangthai=1 where maphong=" + maphong;
-            MySqlCommand cmd = new MySqlCommand(sOpen, conn);
-            cmd.ExecuteNonQuery();
+            txt_hdsohoadon.Text = "";
+            cmb_hdphong.Text = "";
+            dtm_hdgiovao.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            dtm_hdgiora.Text = "";
+            LoadKhoHoaDon();
+            LoadHoaDonHoatDong();
+            LoadCmbPhong();
+            LoadDichvu();
         }
-        public void CloseRoom(string maphong)
-        {
-
-            string sClose = "update phong set trangthai=0 where maphong=" + maphong;
-            MySqlCommand cmd = new MySqlCommand(sClose, conn);
-            cmd.ExecuteNonQuery();
-        }
+        #endregion
+       
         private void dgv_hoadonhd_Click(object sender, EventArgs e)
         {
             try
@@ -231,38 +178,29 @@ namespace QuanlyKaraoke
         
         public void ThemHoaDon()
         {
-            OpenRoom(cmb_hdphong.SelectedValue.ToString());
+            XuLyPhong.OpenRoom(cmb_hdphong.SelectedValue.ToString());
             var check = XuLyHoaDon.ThemHoaDon(cmb_hdphong.SelectedValue.ToString());
             if (check == null) MessageBox.Show("Thêm hóa đơn thành công!");
             else MessageBox.Show(check);
             LoadHoaDonHoatDong();
             LoadKhoHoaDon();
-            LoadCmbPhong();
-            
-            
-            
+            LoadCmbPhong();            
         }
         public void DoiPhong()
         {
-            
-            try
+            XuLyPhong.CloseRoom(testRoom);
+            XuLyPhong.OpenRoom(cmb_hdphong.SelectedValue.ToString());
+            string doiPhong = XuLyHoaDon.ChangeRoom(cmb_hdphong.SelectedValue.ToString(), txt_hdsohoadon.Text);
+            if (doiPhong == null)
             {
-                CloseRoom(testRoom);
-                string sDoiPhong =  "update hoadon set maphong=" + cmb_hdphong.SelectedValue.ToString() + " where sohd =" + txt_hdsohoadon.Text;
-                MySqlCommand cmd = new MySqlCommand(sDoiPhong, conn);
-                OpenRoom(cmb_hdphong.SelectedValue.ToString());
-                cmd.ExecuteNonQuery();
+                MessageBox.Show("Đổi phòng thành công!");
                 LoadHoaDonHoatDong();
                 LoadKhoHoaDon();
                 LoadCmbPhong();
-                
-                MessageBox.Show("Đổi phòng thành công!");
+            }
+            else MessageBox.Show(doiPhong);
       
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            
         }
         private void btn_hdthemmoi_Click(object sender, EventArgs e)
         {
@@ -292,10 +230,8 @@ namespace QuanlyKaraoke
             if (txt_hdsohoadon.Text == "") MessageBox.Show("Chọn Hóa đơn cần đổi phòng!");
             else
             {
-                check = 2;
-                             
+                check = 2;         
                 cmb_hdphong.Enabled = true;
-                
                 btn_hdok.Visible = true;
                 btn_hdcancel.Visible = true;
             }
@@ -334,6 +270,8 @@ namespace QuanlyKaraoke
         }
 
 
+
+        #region  XỬ LÝ DỊCH VỤ
         private void dgv_dichvu_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -355,7 +293,6 @@ namespace QuanlyKaraoke
             {
             }
         }
-
         private void btn_dv_xoa_Click(object sender, EventArgs e)
         {
             if (txt_madv.Text.Equals(null) || txt_madv.Text.Equals("")) return;
@@ -370,6 +307,11 @@ namespace QuanlyKaraoke
             txt_dv_soluong.Text = "";
             txt_dv_dongia.Text = "";
             txt_dv_dvt.Text = "";
+            txt_madv.Enabled = false;
+            txt_tendv.Enabled = false;
+            txt_dv_soluong.Enabled = false;
+            txt_dv_dongia.Enabled = false;
+            txt_dv_dvt.Enabled = false;
             btn_dv_ok.Visible = false;
             btn_dv_cancel.Visible = false;
         }
@@ -382,12 +324,13 @@ namespace QuanlyKaraoke
             txt_dv_dvt.Enabled = true;
             btn_dv_ok.Visible = true;
             btn_dv_cancel.Visible = true;
+
         }
         private void btn_dv_them_Click(object sender, EventArgs e)
         {
             ResetDichVu();
             OnDichVu();
-            
+
         }
 
         private void btn_dv_ok_Click(object sender, EventArgs e)
@@ -402,28 +345,206 @@ namespace QuanlyKaraoke
             LoadDichvu();
             ResetDichVu();
         }
+        #endregion
 
-        private void dgv_hoadondichvu_CellClick(object sender, DataGridViewCellEventArgs e)
+        #region  XỬ LÝ PHÒNG
+        private static int CheckRoom;
+        private void ResetPhong()
         {
-            DataGridViewRow dt = dgv_hoadondichvu.SelectedRows[0];
-            txt_hdmadv.Text = dt.Cells["hddv_madv"].Value.ToString();
-            int soluong = Int16.Parse(dt.Cells["hddv_soluong"].Value.ToString());
-            nud_hddv_soluong.Value = soluong;
+            txt_phongMaPhong.Text = "";
+            txt_phongTenPhong.Text = "";
+            txt_phongGiaPhong.Text = "";
+            txt_phongMoTa.Text = "";
+            txt_phongMaPhong.Enabled = false;
+            txt_phongTenPhong.Enabled = false;
+            txt_phongGiaPhong.Enabled = false;
+            txt_phongMoTa.Enabled = false;
+            btn_phongOK.Visible = false;
+            btn_phongCancel.Visible = false;
+        }
+        private void OnPhong()
+        {
+            txt_phongMaPhong.Enabled = true;
+            txt_phongTenPhong.Enabled = true;
+            txt_phongGiaPhong.Enabled = true;
+            txt_phongMoTa.Enabled = true;
+            btn_phongOK.Visible = true;
+            btn_phongCancel.Visible = true;
+
+        }
+        private void LoadPhong()
+        {
+            dgv_Phong.DataSource = null;
+            dgv_Phong.Rows.Clear();
+            #region Đổ dữ liệu bảng dịch vụ
+            var lst = XuLyPhong.GetRoom();
+            foreach (Phong p in lst)
+            {
+                dgv_Phong.Rows.Add(p.MaPhong, p.TenPhong,p.GiaPhong, p.TrangThai, p.MoTa);
+            }
+            #endregion
+        }
+        private void tabPhong_Click(object sender, EventArgs e)
+        {
+            ResetPhong();
+            LoadPhong();
         }
 
-        private void btn_hd_save_Click(object sender, EventArgs e)
+        #endregion
+
+        private void dgv_Phong_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            var soHd = txt_hdsohoadon.Text.ToString();
-            var maDv = txt_hdmadv.Text.ToString();
-            var soLuong = nud_hddv_soluong.Value.ToString();
-            XuLyHoaDon.Update(soHd, maDv, soLuong);
-            ExcuteHoaDonDichVu(soHd);
+            try
+            {
+                DataGridViewRow dt = dgv_Phong.SelectedRows[0];
+                txt_phongMaPhong.Text = dt.Cells["cl_maphong"].Value.ToString();
+                txt_phongTenPhong.Text = dt.Cells["cl_tenphong"].Value.ToString();
+                txt_phongGiaPhong.Text = dt.Cells["cl_giaphong"].Value.ToString();
+                txt_phongMoTa.Text = dt.Cells["cl_mota"].Value.ToString();
+
+            }
+            catch
+            {
+            }
+        }
+        private void ModeButtonPhong(bool on)
+        {
+            if (on)
+            {
+                btnphong_them.Enabled = true;
+                btnphong_chinhsua.Enabled = true;
+                btnphong_xoa.Enabled = true;
+                btnphong_tim.Enabled = true;
+                
+            }
+            else
+            {
+                btnphong_them.Enabled = false;
+                btnphong_chinhsua.Enabled = false;
+                btnphong_xoa.Enabled = false;
+                btnphong_tim.Enabled = false;
+            }
+        }
+        private void btnphong_them_Click(object sender, EventArgs e)
+        {
+            CheckRoom = 1;
+            ModeButtonPhong(false);
+            btnphong_them.Enabled = true;
+            ResetPhong();
+            OnPhong();
+        }
+        private void btnphong_chinhsua_Click(object sender, EventArgs e)
+        {
+            CheckRoom = 2;
+            if (txt_phongMaPhong.Text == "") MessageBox.Show("Chọn phòng cần chỉnh sửa!");
+            else
+            {
+                ModeButtonPhong(false);
+                btnphong_chinhsua.Enabled = true;
+                OnPhong();
+                txt_phongMaPhong.Enabled = false;
+            }
+            
+        }
+        private void btnphong_xoa_Click(object sender, EventArgs e)
+        {
+            CheckRoom = 3;
+            if (txt_phongMaPhong.Text == "") MessageBox.Show("Chọn phòng cần Xóa!");
+            else
+            {
+                DialogResult dialogResult = MessageBox.Show("Bạn có chắc muốn xóa phòng này", "CHÚ Ý!", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    if(XuLyPhong.CheckPhong(txt_phongMaPhong.Text)) MessageBox.Show("Phòng này đang được sử dụng, Không thể xóa!");
+                    else
+                    {
+                        var resultDelete = XuLyPhong.DeleteRoom(txt_phongMaPhong.Text);
+                        if (resultDelete == null) MessageBox.Show("Xóa phòng thành công!!!");
+                        else MessageBox.Show(resultDelete);
+                        LoadPhong();
+                    }
+                    
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    ResetPhong();
+                }
+
+            }
+        }
+        private void btnphong_tim_Click(object sender, EventArgs e)
+        {
+            CheckRoom = 4;
+            ModeButtonPhong(false);
+            btnphong_tim.Enabled = true;
+            ResetPhong();
+            OnPhong();
+        }
+
+        private void btn_phongCancel_Click(object sender, EventArgs e)
+        {
+            ResetPhong();
+            ModeButtonPhong(true);
+        }
+
+        private void btn_phongOK_Click(object sender, EventArgs e)
+        {
+            var maPhong = txt_phongMaPhong.Text;
+            var tenPhong = txt_phongTenPhong.Text;
+            var giaPhong = txt_phongGiaPhong.Text;
+            var moTa = txt_phongMoTa.Text;
+     
+            switch (CheckRoom)
+            {
+                case 1:
+                    var result = XuLyPhong.AddRoom(maPhong, tenPhong, giaPhong, 0, moTa);
+                    if (result==null) MessageBox.Show("Thêm Phòng thành công!!!");
+                    else MessageBox.Show(result);
+                    LoadPhong();
+                    break;
+                case 2:
+                    var resultEdit = XuLyPhong.EditRoom(maPhong, tenPhong, giaPhong, moTa);
+                    if (resultEdit == null) MessageBox.Show("Sửa phòng thành công!!!");
+                    else MessageBox.Show(resultEdit);
+                    LoadPhong();
+                    break;
+                case 3:
+                    
+                    break;
+                case 4:
+                    dgv_Phong.DataSource = null;
+                    dgv_Phong.Rows.Clear(); 
+                    List<Phong> lst = XuLyPhong.FindRoom(maPhong, tenPhong, giaPhong, moTa);
+                    if (lst.Count==0) MessageBox.Show("Không tim thấy phòng theo yêu cầu!!!");
+                    else
+                    foreach (Phong p in lst)
+                    {
+                        dgv_Phong.Rows.Add(p.MaPhong, p.TenPhong, p.GiaPhong, p.TrangThai, p.MoTa);
+                    }
+                    break;
+                default:
+                    Console.WriteLine("Default case");
+                    break;
+            }
+            ResetPhong();
+            ModeButtonPhong(true);
+            btn_phongOK.Visible = false;
+            btn_phongCancel.Visible = false;
             
         }
 
-        private void btn_dv_cancel_Click(object sender, EventArgs e)
+        private void txtphong_Load_Click(object sender, EventArgs e)
         {
-            ResetDichVu();
+            ResetPhong();
+            LoadPhong();
+            ModeButtonPhong(true);
         }
+
+        private void btn_hdXoa_Click(object sender, EventArgs e)
+        {
+
+        }
+
+       
     }
 }

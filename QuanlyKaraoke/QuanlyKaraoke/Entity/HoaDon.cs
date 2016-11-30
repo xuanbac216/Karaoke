@@ -102,7 +102,7 @@ namespace QuanlyKaraoke.Entity
             MaPhong = maPhong;
             GioVao = gioVao;
         }
-        public HoaDon(int soHoaDon, int maPhong, string khachHang, string diaChi, DateTime gioVao, DateTime gioRa, int trangThai)
+        public HoaDon(int soHoaDon, int maPhong, string khachHang, string diaChi, DateTime gioVao, DateTime gioRa)
         {
             SoHoaDon = soHoaDon;
             MaPhong = maPhong;

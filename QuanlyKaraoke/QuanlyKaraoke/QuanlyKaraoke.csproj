@@ -65,6 +65,7 @@
   <ItemGroup>
     <Compile Include="BLL\XuLyDichVu.cs" />
     <Compile Include="BLL\XuLyHoaDon.cs" />
+    <Compile Include="BLL\XuLyPhong.cs" />
     <Compile Include="BLL\XuLyUser.cs" />
     <Compile Include="DAL\DAO.cs" />
     <Compile Include="DAL\DichVuDAO.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="Entity\DichVu.cs" />
     <Compile Include="Entity\HoaDon.cs" />
     <Compile Include="Entity\Phong.cs" />
+    <Compile Include="Entity\StringQuery.cs" />
     <Compile Include="Entity\User.cs" />
     <Compile Include="GUI\frm_main.cs">
       <SubType>Form</SubType>

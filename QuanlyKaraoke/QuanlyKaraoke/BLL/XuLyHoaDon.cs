@@ -10,7 +10,20 @@ namespace QuanlyKaraoke.BLL
 {
     class XuLyHoaDon
     {
+        internal static string ChangeRoom(string maPhong, string maHoaDon)
+        {
+            return HoaDonDAO.ChangeRoom(maPhong,maHoaDon);
+        }
         internal static List<HoaDon> GetHoaDon()
+        {
+
+            #region Load du lieu 
+            var lst = HoaDonDAO.LoadKhoHoaDon();
+            return lst;
+
+            #endregion
+        }
+        internal static List<HoaDon> GetHoaDonHoatDong()
         {
             
             #region Load du lieu 
@@ -19,6 +32,7 @@ namespace QuanlyKaraoke.BLL
          
             #endregion
         }
+
         internal static List<DichVu> GetDichVuHoaDon(string soHD)
         {
 

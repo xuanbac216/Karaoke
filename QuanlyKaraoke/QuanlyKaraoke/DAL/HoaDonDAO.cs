@@ -13,6 +13,47 @@ namespace QuanlyKaraoke.DAL
     public class HoaDonDAO : DAO
     {
         List<KeyValuePair<bool, String>> Error;
+        internal static List<HoaDon> LoadKhoHoaDon()
+        {
+            var lst = new List<HoaDon>();
+
+            #region 1. Open DbConnection
+            OpenConnection();
+
+            #endregion
+
+            #region 2. Xác định đối tượng truy vấn dữ liệu DbCommand
+            var cmd = dbConnection.CreateCommand();
+            cmd.CommandText = "select * from hoadon where trangthai=1";
+            #endregion
+
+            #region 3. Thực hiện truy vấn
+            var dr = cmd.ExecuteReader();
+            #endregion
+
+            #region 4. Xử lý kết quả truy vấn
+            while (true)
+            {
+                if (dr.Read() == false)
+                    break;
+                var soHoaDon = dr.GetInt32(0);
+                var maPhong = dr.GetInt32(1);
+                var khachHang = dr.GetString(2);
+                var diaChi = dr.GetString(3);
+                var gioVao = dr.GetDateTime(4);
+                var gioRa = dr.GetDateTime(5);
+                var hd = new HoaDon(soHoaDon, maPhong, khachHang, diaChi, gioVao, gioRa);
+                lst.Add(hd);
+            }
+            #endregion
+
+            #region 5. Giải phóng tài nguyên
+            dr.Close();
+            CloseConnection();
+            #endregion
+
+            return lst;
+        }
         internal static List<HoaDon> LoadHoaDonHoatDong()
         {
             var lst = new List<HoaDon>();
@@ -92,7 +133,38 @@ namespace QuanlyKaraoke.DAL
 
             return error;
         }
+        internal static string ChangeRoom(string maPhong, string maHoaDon)
+        {
+            var lst = new List<Phong>();
+            string error = null;
+            #region 1. Open DbConnection
+            OpenConnection();
+            #endregion
+            #region 2. Xác định đối tượng truy vấn dữ liệu DbCommand
+            var cmd = dbConnection.CreateCommand();
+            cmd.CommandText = "update hoadon set maphong = " + maPhong + " where sohd = " + maHoaDon;
+            #endregion
+            #region 3. Thực hiện truy vấn
+            try
+            {
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception exc)
+            {
+                error = "Đổi phòng thất bại! Lỗi: " + exc.Message;
+            }
 
-        
+            #endregion
+
+            #region 4. Xử lý kết quả truy vấn
+
+            #endregion
+
+            #region 5. Giải phóng tài nguyên
+            CloseConnection();
+            #endregion
+            return error;
+        }
+
     }
 }
