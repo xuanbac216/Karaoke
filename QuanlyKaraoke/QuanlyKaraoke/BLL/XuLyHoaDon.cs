@@ -58,13 +58,29 @@ namespace QuanlyKaraoke.BLL
             return HoaDonDAO.ThemHoaDon(maPhong);
             #endregion
         }
-        internal static void Update(string soHd, string maDv, string soluong)
+        internal static void Update(string soHd, string maDv, int soluong)
         {
             HoaDonDichVuDAO.Update(soHd, maDv, soluong);
         }
-        internal static void ThemDichVu(string soHd, string maDv, string soluong)
+        internal static string ThemDichVu(string soHd, string maDv, string soluong)
         {
-            HoaDonDichVuDAO.ThemDichVu(soHd, maDv, soluong);
+            int soLuongCo = XuLyDichVu.GetSoLuong(maDv);
+            if (Int16.Parse(soluong) > soLuongCo) return "Kho dịch vụ không đủ số lượng! Vui lòng kiểm tra lại";
+            int soLuongConLai = soLuongCo - Int16.Parse(soluong);
+            string resultUpdate = XuLyDichVu.UpdateSoLuong(maDv,Convert.ToString(soLuongConLai));
+            if (resultUpdate == null)
+            {
+                return HoaDonDichVuDAO.ThemDichVu(soHd, maDv, soluong);
+            }
+            else return "Lỗi không thể trừ số lượng dịch vụ trong kho";
+        }
+        internal static bool CheckHoaDon(string soHoaDon)
+        {
+            return HoaDonDAO.CheckHoaDon(soHoaDon);
+        }
+        internal static string XoaHoaDon(string soHoaDon)
+        {
+            return HoaDonDAO.XoaHoaDon(soHoaDon);
         }
     }
 }

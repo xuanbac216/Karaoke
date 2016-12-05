@@ -19,6 +19,18 @@ namespace QuanlyKaraoke.BLL
 
             #endregion
         }
+        internal static int GetSoLuong(string maDichVu)
+        {
+            List<DichVu> lst = GetDichVu();
+            foreach (DichVu dv in lst)
+            {  
+                if (dv.maDichVu.ToString().Equals(maDichVu))
+                {
+                    return dv.soLuong;
+                }
+            }
+            return -1;
+        }
         internal static void XoaDichVu(string maDV)
         {
 
@@ -61,6 +73,10 @@ namespace QuanlyKaraoke.BLL
         internal static void ThemDichVu(string maDV, string tenDV, string loaiDV, string sl, string donGia, string dVT)
         {
             DichVuDAO.ThemDichVu(maDV, tenDV, loaiDV, sl, donGia, dVT);
+        }
+        internal static String UpdateSoLuong(string maDichVu, string soLuong)
+        {
+            return DichVuDAO.UpdateSoLuong(maDichVu, soLuong);
         }
     }
 }

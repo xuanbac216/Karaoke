@@ -16,60 +16,15 @@ namespace QuanlyKaraoke
     public partial class frm_main : Form
     {
         DataSet ds;
-        static string connetionString = "server=localhost;database=karaoke;uid=root;pwd=;";
-        MySqlConnection conn = new MySqlConnection(connetionString);
-        MySqlDataAdapter daKaraoke;
         DataTable table = new DataTable();
         string testRoom;
         public int check;
         public frm_main()
         {
             InitializeComponent();
-            OpenConnection();
           
         }
-        private void OpenConnection()
-        {
-            try
-            {
-                conn.Open();
-
-            }
-            catch (MySqlException ex)
-            {
-                //When handling errors, you can your application's response based 
-                //on the error number.
-                //The two most common error numbers when connecting are as follows:
-                //0: Cannot connect to server.
-                //1045: Invalid user name and/or password.
-                switch (ex.Number)
-                {
-                    case 0:
-                        MessageBox.Show("Cannot connect to server.  Contact administrator");
-                        break;
-
-                    case 1045:
-                        MessageBox.Show("Invalid username/password, please try again");
-                        break;
-                }
-
-            }
-        }
-
-
-        private void CloseConnection()
-        {
-            try
-            {
-                conn.Close();
-
-            }
-            catch (MySqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-
-            }
-        }
+       
         #region XỬ LÝ HÓA ĐƠN
         public void LoadKhoHoaDon()
         {
@@ -143,19 +98,75 @@ namespace QuanlyKaraoke
             }
 
         }
-        private void frm_main_Load(object sender, EventArgs e)
+        private void ResetHoaDon()
         {
             txt_hdsohoadon.Text = "";
             cmb_hdphong.Text = "";
             dtm_hdgiovao.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             dtm_hdgiora.Text = "";
+            txt_hdsohoadon.Enabled = false;
+            cmb_hdphong.Enabled = false;
+            dtm_hdgiovao.Enabled = false;
+            dtm_hdgiora.Visible = false;
+            btn_hdok.Visible = false;
+            btn_hdcancel.Visible = false;
+            
+        }
+        private void OnHoaDon()
+        {
+            txt_hdsohoadon.Enabled = true;
+            cmb_hdphong.Enabled = true;
+            dtm_hdgiovao.Enabled = true;
+            btn_hdok.Visible = true;
+            btn_hdcancel.Visible = true;
+        }
+        private void ModeButtonHoaDon(bool on)
+        {
+            if (on)
+            {
+                btn_hdthemmoi.Enabled = true;
+                btn_hdchinhsua.Enabled = true;
+                btn_hdTim.Enabled = true;
+                btn_hdXoa.Enabled = true;
+                btn_hdThemdv.Enabled = true;
+                btn_hdXuat.Enabled = true;
+            }
+            else
+            {
+                btn_hdthemmoi.Enabled = false;
+                btn_hdchinhsua.Enabled = false;
+                btn_hdTim.Enabled = false;
+                btn_hdXoa.Enabled = false;
+                btn_hdThemdv.Enabled = false;
+                btn_hdXuat.Enabled = false;
+            }
+            
+        }
+        private void frm_main_Load(object sender, EventArgs e)
+        {
+            ResetHoaDon();
             LoadKhoHoaDon();
             LoadHoaDonHoatDong();
             LoadCmbPhong();
             LoadDichvu();
         }
         #endregion
-       
+        private void dgv_khohoadon_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                DataGridViewRow dt = dgv_khohoadon.SelectedRows[0];
+                txt_hdsohoadon.Text = dt.Cells["cl_sohoadon"].Value.ToString();
+                cmb_hdphong.Text = dt.Cells["cl_phong"].Value.ToString();
+                testRoom = dt.Cells["cl_phong"].Value.ToString();
+                dtm_hdgiovao.Text = dt.Cells["cl_giovao"].Value.ToString();
+                dtm_hdgiora.Visible = true;
+                dtm_hdgiora.Text = dt.Cells["cl_giora"].Value.ToString();
+            }
+            catch
+            {
+            }
+        }
         private void dgv_hoadonhd_Click(object sender, EventArgs e)
         {
             try
@@ -165,8 +176,7 @@ namespace QuanlyKaraoke
                 cmb_hdphong.Text = dt.Cells["hdhd_phong"].Value.ToString();
                 testRoom = dt.Cells["hdhd_phong"].Value.ToString();
                 dtm_hdgiovao.Text = dt.Cells["hdhd_giovao"].Value.ToString();
-                
-                //dtm_hdgiora.Text = dt.Cells["hdhd_giora"].Value.ToString();
+             
                 cmb_hdphong.Enabled = false;
                 ExcuteHoaDonDichVu(txt_hdsohoadon.Text.ToString());
                 
@@ -174,7 +184,20 @@ namespace QuanlyKaraoke
             catch {
             }
         }
+        
+        private void dgv_hoadondichvu_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                DataGridViewRow dt = dgv_hoadondichvu.SelectedRows[0];
+                txt_hdmadv.Text = dt.Cells["hddv_madv"].Value.ToString();
+                nud_hddv_soluong.Value = Int32.Parse(dt.Cells["hddv_soluong"].Value.ToString());
 
+            }
+            catch
+            {
+            }
+        }
         
         public void ThemHoaDon()
         {
@@ -205,59 +228,22 @@ namespace QuanlyKaraoke
         private void btn_hdthemmoi_Click(object sender, EventArgs e)
         {
             check = 1;
-            txt_hdsohoadon.Text = "";
-            cmb_hdphong.Enabled = true;
-            dtm_hdgiovao.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-            dtm_hdgiora.Text = "";
-            btn_hdok.Visible = true;
-            btn_hdcancel.Visible = true;
-        }
+            ModeButtonHoaDon(false);
+            btn_hdthemmoi.Enabled = true;
+            ResetHoaDon();
+            OnHoaDon();
+            txt_hdsohoadon.Enabled = false;
 
+        }
        
-
-        private void btn_hdcancel_Click(object sender, EventArgs e)
+        //Xử lý THÊM DỊCH VỤ cho HÓA ĐƠN
+        private void btn_hd_save_Click(object sender, EventArgs e)
         {
-            txt_hdsohoadon.Text = "";
-            cmb_hdphong.Text = "";
-            dtm_hdgiovao.Text = "";
-            dtm_hdgiora.Text = "";
-            btn_hdok.Visible = false;
-            btn_hdcancel.Visible = false;
+            XuLyHoaDon.Update(txt_hdsohoadon.Text, txt_hdmadv.Text, Int16.Parse(nud_hddv_soluong.Value.ToString()));
+            ExcuteHoaDonDichVu(txt_hdsohoadon.Text);
+            LoadDichvu();
         }
-
-        private void btn_hdchinhsua_Click(object sender, EventArgs e)
-        {
-            if (txt_hdsohoadon.Text == "") MessageBox.Show("Chọn Hóa đơn cần đổi phòng!");
-            else
-            {
-                check = 2;         
-                cmb_hdphong.Enabled = true;
-                btn_hdok.Visible = true;
-                btn_hdcancel.Visible = true;
-            }
-              
-        }
-
-
-        private void btn_hdok_Click(object sender, EventArgs e)
-        {
-            switch (check)
-            {
-                case 1:
-                    ThemHoaDon();
-                    break;
-                case 2:
-                    DoiPhong();
-                    break;
-                default:
-                    Console.WriteLine("Default case");
-                    break;
-            }
-            btn_hdok.Visible = false;
-            btn_hdcancel.Visible = false;
-        }
-
-        private void toolStripButton26_Click(object sender, EventArgs e)
+        private void btn_hdThemdv_Click(object sender, EventArgs e)
         {
             if (txt_hdsohoadon.Text == "") MessageBox.Show("Chọn Hóa đơn cần thêm dịch vụ!");
             else
@@ -269,6 +255,80 @@ namespace QuanlyKaraoke
             }
         }
 
+        private void btn_hdcancel_Click(object sender, EventArgs e)
+        {
+            ResetHoaDon();
+            ModeButtonHoaDon(true);
+        }
+
+        private void btn_hdchinhsua_Click(object sender, EventArgs e)
+        {
+            if (txt_hdsohoadon.Text == "") MessageBox.Show("Chọn Hóa đơn cần đổi phòng!");
+            else
+            {
+                check = 2;
+                ModeButtonHoaDon(false);
+                btn_hdchinhsua.Enabled = true;
+                cmb_hdphong.Enabled = true;
+                btn_hdok.Visible = true;
+                btn_hdcancel.Visible = true;
+            }
+              
+        }
+        private void btn_hdXoa_Click(object sender, EventArgs e)
+        {
+            if (txt_hdsohoadon.Text == "") MessageBox.Show("Chọn Hóa đơn Xóa!");
+            else
+            {
+                DialogResult dialogResult = MessageBox.Show("Bạn có chắc muốn xóa Hóa đơn này", "CHÚ Ý!", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    if (XuLyHoaDon.CheckHoaDon(txt_hdsohoadon.Text)) MessageBox.Show("Bạn không có quyền xóa hóa đơn này!");
+                    else
+                    {
+
+                        var Close = XuLyPhong.CloseRoom(cmb_hdphong.Text.ToString());
+                        if (Close == null)
+                        {
+                            var resultDelete = XuLyHoaDon.XoaHoaDon(txt_hdsohoadon.Text);
+                            if (resultDelete == null) MessageBox.Show("Bạn đã hủy hóa đơn thành công!!!");
+                            else MessageBox.Show(resultDelete);
+                        }
+                        else MessageBox.Show("Lỗi hệ thống không thể mở lại phòng hát\n");
+                        LoadCmbPhong();
+                        LoadHoaDonHoatDong();
+                    }
+
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    ResetPhong();
+                }
+
+            }
+        }
+
+        private void btn_hdok_Click(object sender, EventArgs e)
+        {
+            switch (check)
+            {
+                case 1:
+                    ThemHoaDon();
+                    ModeButtonHoaDon(true);
+                    break;
+                case 2:
+                    DoiPhong();
+                    ModeButtonHoaDon(true);
+                    break;
+                default:
+                    Console.WriteLine("Default case");
+                    break;
+            }
+            btn_hdok.Visible = false;
+            btn_hdcancel.Visible = false;
+        }
+
+     
 
 
         #region  XỬ LÝ DỊCH VỤ
@@ -540,11 +600,11 @@ namespace QuanlyKaraoke
             ModeButtonPhong(true);
         }
 
-        private void btn_hdXoa_Click(object sender, EventArgs e)
+        private void groupBox2_Enter(object sender, EventArgs e)
         {
 
         }
 
-       
+        
     }
 }

@@ -165,6 +165,69 @@ namespace QuanlyKaraoke.DAL
             #endregion
             return error;
         }
+        internal static bool CheckHoaDon(string soHoaDon)
+        {
+            var lst = new List<Phong>();
+            #region 1. Xác định DbConnection đến CSDL
 
+            OpenConnection();
+            #endregion
+
+            #region 2. Xác định đối tượng truy vấn dữ liệu DbCommand
+            var cmd = dbConnection.CreateCommand();
+            cmd.CommandText = "select sohd from hoadon where sohd = " + soHoaDon + " and trangthai=1";
+            #endregion
+            bool check = false;
+            #region 3. Thực hiện truy vấn
+            try
+            {
+                var rd = cmd.ExecuteReader();
+                if (rd.Read()) check = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Loi" + ex.ToString());
+            }
+            #endregion
+
+            #region 4. Xử lý kết quả truy vấn
+
+            #endregion
+
+            #region 5. Giải phóng tài nguyên
+            CloseConnection();
+            return check;
+            #endregion
+
+        }
+        internal static string XoaHoaDon(string maHoaDon)
+        {
+            string error = null;
+            #region 1. Open DbConnection
+            OpenConnection();
+            #endregion
+            #region 2. Xác định đối tượng truy vấn dữ liệu DbCommand
+            var cmd = dbConnection.CreateCommand();
+            cmd.CommandText = "DELETE FROM hoadon WHERE sohd=" + maHoaDon;
+            #endregion
+            #region 3. Thực hiện truy vấn
+            try
+            {
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception exc)
+            {
+                error = "Xóa hóa đơn thất bại! Lỗi: " + exc.Message;
+            }
+
+            #endregion
+            #region 4. Xử lý kết quả truy vấn
+
+            #endregion
+            #region 5. Giải phóng tài nguyên
+            CloseConnection();
+            #endregion
+            return error;
+        }
     }
 }

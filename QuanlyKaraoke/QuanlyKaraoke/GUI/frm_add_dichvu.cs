@@ -80,7 +80,9 @@ namespace QuanlyKaraoke
             var soHd = txt_hddv_sohd.Text.ToString();
             var maDv = txt_hddv_madv.Text.ToString();
             var sl = nud_hddv_sl.Value.ToString();
-            XuLyHoaDon.ThemDichVu(soHd, maDv, sl);
+            var result = XuLyHoaDon.ThemDichVu(soHd, maDv, sl);
+            if (result == null) MessageBox.Show("Thêm dịch vụ cho hóa đơn thành công");
+            else MessageBox.Show(result);
             this.Close();
         }
     }

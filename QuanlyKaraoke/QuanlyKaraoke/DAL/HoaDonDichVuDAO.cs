@@ -16,9 +16,7 @@ namespace QuanlyKaraoke.DAL
 
             #region 1. Open DbConnection
             OpenConnection();
-
             #endregion
-
             #region 2. Xác định đối tượng truy vấn dữ liệu DbCommand
             var cmd = dbConnection.CreateCommand();
             cmd.CommandText = "select hd.madv, dv.tendv, hd.soluong from hoadon_dichvu as hd, dichvu as dv where hd.madv = dv.madv and sohd=" + soHD;
@@ -120,7 +118,7 @@ namespace QuanlyKaraoke.DAL
             #endregion
 
         }
-        internal static void Update (string soHD, string maDv, string soluong )
+        internal static void Update (string soHD, string maDv, int soluong )
         {
             OpenConnection();
             
@@ -150,11 +148,23 @@ namespace QuanlyKaraoke.DAL
             
             #endregion
         }
-        internal static void ThemDichVu(string soHD, string maDv, string soluong)
+        internal static string ThemDichVu(string soHD, string maDv, string soluong)
         {
+            string result = null;
+            List<DichVu> lst = GetDichVu(soHD);
+            foreach (DichVu dv in lst)
+            {
+                if (dv.maDichVu.ToString().Equals(maDv))
+                {
+                    int sl = dv.soLuong + Int16.Parse(soluong) ;
+                    Update(soHD, maDv,  sl );
+                    return result;
+                }
+            } 
             OpenConnection();
             #region 
             var cmd = dbConnection.CreateCommand();
+            
             cmd.CommandText = "insert into hoadon_dichvu(sohd,madv,soluong) value(@sohd,@madv,@soluong)";
             AddParam(cmd, "@sohd", DbType.Int32, soHD);
             AddParam(cmd, "@madv", DbType.Int32, maDv);
@@ -172,14 +182,14 @@ namespace QuanlyKaraoke.DAL
             catch (Exception exc)
             {
                 
-                MessageBox.Show("Thêm hóa đơn thất bại! Lỗi:" + exc);
+                result = "Thêm hóa đơn thất bại! Lỗi:" + exc;
                 
             }
             #endregion
 
             #region 5. Giải phóng tài nguyên
             CloseConnection();
-
+            return result;
             #endregion
         }
     }

@@ -78,12 +78,12 @@
             this.hddv_soluong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.dgv_khohoadon = new System.Windows.Forms.DataGridView();
-            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cl_sohoadon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cl_phong = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cl_khachhang = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cl_diachi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cl_giovao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cl_giora = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btn_hdthemmoi = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -93,8 +93,8 @@
             this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
             this.btn_hdTim = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButton26 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton15 = new System.Windows.Forms.ToolStripButton();
+            this.btn_hdThemdv = new System.Windows.Forms.ToolStripButton();
+            this.btn_hdXuat = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
@@ -453,6 +453,7 @@
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Hóa đơn - Dịch vụ";
+            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // nud_hddv_soluong
             // 
@@ -469,6 +470,7 @@
             this.btn_hd_save.TabIndex = 4;
             this.btn_hd_save.Text = "Lưu";
             this.btn_hd_save.UseVisualStyleBackColor = true;
+            this.btn_hd_save.Click += new System.EventHandler(this.btn_hd_save_Click);
             // 
             // label3
             // 
@@ -647,6 +649,7 @@
             this.dgv_hoadondichvu.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_hoadondichvu.Size = new System.Drawing.Size(379, 244);
             this.dgv_hoadondichvu.TabIndex = 0;
+            this.dgv_hoadondichvu.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_hoadondichvu_CellContentClick);
             // 
             // hddv_madv
             // 
@@ -694,12 +697,12 @@
             this.dgv_khohoadon.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dgv_khohoadon.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_khohoadon.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column14,
-            this.Column15,
-            this.Column18,
-            this.Column19,
-            this.Column16,
-            this.Column17});
+            this.cl_sohoadon,
+            this.cl_phong,
+            this.cl_khachhang,
+            this.cl_diachi,
+            this.cl_giovao,
+            this.cl_giora});
             dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -714,38 +717,39 @@
             this.dgv_khohoadon.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_khohoadon.Size = new System.Drawing.Size(768, 244);
             this.dgv_khohoadon.TabIndex = 0;
+            this.dgv_khohoadon.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_khohoadon_CellContentClick);
             // 
-            // Column14
+            // cl_sohoadon
             // 
-            this.Column14.HeaderText = "Số hóa đơn";
-            this.Column14.Name = "Column14";
+            this.cl_sohoadon.HeaderText = "Số hóa đơn";
+            this.cl_sohoadon.Name = "cl_sohoadon";
             // 
-            // Column15
+            // cl_phong
             // 
-            this.Column15.HeaderText = "Phòng";
-            this.Column15.Name = "Column15";
+            this.cl_phong.HeaderText = "Phòng";
+            this.cl_phong.Name = "cl_phong";
             // 
-            // Column18
+            // cl_khachhang
             // 
-            this.Column18.HeaderText = "Khách hàng";
-            this.Column18.Name = "Column18";
+            this.cl_khachhang.HeaderText = "Khách hàng";
+            this.cl_khachhang.Name = "cl_khachhang";
             // 
-            // Column19
+            // cl_diachi
             // 
-            this.Column19.HeaderText = "Địa chỉ";
-            this.Column19.Name = "Column19";
+            this.cl_diachi.HeaderText = "Địa chỉ";
+            this.cl_diachi.Name = "cl_diachi";
             // 
-            // Column16
+            // cl_giovao
             // 
-            this.Column16.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column16.HeaderText = "Giờ vào";
-            this.Column16.Name = "Column16";
+            this.cl_giovao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cl_giovao.HeaderText = "Giờ vào";
+            this.cl_giovao.Name = "cl_giovao";
             // 
-            // Column17
+            // cl_giora
             // 
-            this.Column17.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column17.HeaderText = "Giờ ra";
-            this.Column17.Name = "Column17";
+            this.cl_giora.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cl_giora.HeaderText = "Giờ ra";
+            this.cl_giora.Name = "cl_giora";
             // 
             // toolStrip1
             // 
@@ -760,8 +764,8 @@
             this.toolStripSeparator9,
             this.btn_hdTim,
             this.toolStripSeparator10,
-            this.toolStripButton26,
-            this.toolStripButton15,
+            this.btn_hdThemdv,
+            this.btn_hdXuat,
             this.toolStripSeparator11});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
@@ -825,22 +829,22 @@
             this.toolStripSeparator10.Name = "toolStripSeparator10";
             this.toolStripSeparator10.Size = new System.Drawing.Size(6, 27);
             // 
-            // toolStripButton26
+            // btn_hdThemdv
             // 
-            this.toolStripButton26.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton26.Image")));
-            this.toolStripButton26.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton26.Name = "toolStripButton26";
-            this.toolStripButton26.Size = new System.Drawing.Size(104, 24);
-            this.toolStripButton26.Text = "Thêm dịch vụ";
-            this.toolStripButton26.Click += new System.EventHandler(this.toolStripButton26_Click);
+            this.btn_hdThemdv.Image = ((System.Drawing.Image)(resources.GetObject("btn_hdThemdv.Image")));
+            this.btn_hdThemdv.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btn_hdThemdv.Name = "btn_hdThemdv";
+            this.btn_hdThemdv.Size = new System.Drawing.Size(104, 24);
+            this.btn_hdThemdv.Text = "Thêm dịch vụ";
+            this.btn_hdThemdv.Click += new System.EventHandler(this.btn_hdThemdv_Click);
             // 
-            // toolStripButton15
+            // btn_hdXuat
             // 
-            this.toolStripButton15.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton15.Image")));
-            this.toolStripButton15.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton15.Name = "toolStripButton15";
-            this.toolStripButton15.Size = new System.Drawing.Size(102, 24);
-            this.toolStripButton15.Text = "Xuất hóa đơn";
+            this.btn_hdXuat.Image = ((System.Drawing.Image)(resources.GetObject("btn_hdXuat.Image")));
+            this.btn_hdXuat.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btn_hdXuat.Name = "btn_hdXuat";
+            this.btn_hdXuat.Size = new System.Drawing.Size(102, 24);
+            this.btn_hdXuat.Text = "Xuất hóa đơn";
             // 
             // toolStripSeparator11
             // 
@@ -2070,7 +2074,7 @@
         private System.Windows.Forms.ToolStripButton btn_hdthemmoi;
         private System.Windows.Forms.ToolStripButton btn_hdchinhsua;
         private System.Windows.Forms.ToolStripButton btn_hdXoa;
-        private System.Windows.Forms.ToolStripButton toolStripButton26;
+        private System.Windows.Forms.ToolStripButton btn_hdThemdv;
         private System.Windows.Forms.ToolStripButton btn_hdTim;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
@@ -2107,19 +2111,13 @@
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.ToolStripButton toolStripButton10;
         private System.Windows.Forms.DataGridView dgv_khohoadon;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column14;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column15;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column18;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column19;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column16;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column17;
         private System.Windows.Forms.TextBox txt_hdsohoadon;
         private System.Windows.Forms.DataGridViewTextBoxColumn hdhd_sohoadon;
         private System.Windows.Forms.DataGridViewTextBoxColumn hdhd_phong;
         private System.Windows.Forms.DataGridViewTextBoxColumn hdhd_giovao;
         private System.Windows.Forms.DataGridView dgv_hoadondichvu;
         private System.Windows.Forms.TabControl tabPhong;
-        private System.Windows.Forms.ToolStripButton toolStripButton15;
+        private System.Windows.Forms.ToolStripButton btn_hdXuat;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
@@ -2162,6 +2160,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cl_trangthai;
         private System.Windows.Forms.DataGridViewTextBoxColumn cl_mota;
         private System.Windows.Forms.ToolStripButton txtphong_Load;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cl_sohoadon;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cl_phong;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cl_khachhang;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cl_diachi;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cl_giovao;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cl_giora;
     }
 }
 

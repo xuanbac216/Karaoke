@@ -51,6 +51,7 @@ namespace QuanlyKaraoke.DAL
 
             return lst;
         }
+        
         internal static void ThemDichVu(string maDV, string tenDV, string loaiDV, string sl, string donGia, string dVT)
         {
             #region 1. Xác định DbConnection đến CSDL
@@ -124,6 +125,41 @@ namespace QuanlyKaraoke.DAL
            
             CloseConnection();
             #endregion
+        }
+
+        internal static String UpdateSoLuong(string maDichVu, string soLuong)
+        {
+            String error = null;
+            #region 1. Open DbConnection
+            OpenConnection();
+
+            #endregion
+
+            #region 2. Xác định đối tượng truy vấn dữ liệu DbCommand
+            var cmd = dbConnection.CreateCommand();
+            cmd.CommandText = "update dichvu set soluong ='" + soLuong + "' where madv =" + maDichVu;
+            #endregion
+            #region 3. Thực hiện truy vấn
+            try
+            {
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception exc)
+            {
+                error = "Dịch vụ không trừ được: " + exc.Message;
+            }
+            #endregion
+
+            #region 4. Xử lý kết quả truy vấn
+
+            #endregion
+
+            #region 5. Giải phóng tài nguyên
+
+            CloseConnection();
+            #endregion
+
+            return error;
         }
     }
 }
